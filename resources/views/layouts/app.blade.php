@@ -19,6 +19,8 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ url('stisla/css/style.css') }}">
     <link rel="stylesheet" href="{{ url('stisla/css/components.css') }}">
+    <link rel="stylesheet" href="{{ url('stisla/css/bootstrap-datetimepicker.min.css') }}">
+
 
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -33,6 +35,8 @@
     <!-- Template JS File -->
     <script src="{{ url('stisla/js/scripts.js') }}"></script>
     <script src="{{ url('stisla/js/custom.js') }}"></script>
+    <script src="{{ url('stisla/js/bootstrap-datetimepicker.min.js') }}"></script>
+
 
     <!-- Page Specific JS File -->
 </head>

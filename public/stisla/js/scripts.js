@@ -442,11 +442,11 @@ $(function() {
       $(target).collapse('toggle');
       $(target).on('shown.bs.collapse', function(e) {
         e.stopPropagation();
-        me.html('<i class="fas fa-minus"></i>');
+        me.html('Hide');
       });
       $(target).on('hidden.bs.collapse', function(e) {
         e.stopPropagation();
-        me.html('<i class="fas fa-plus"></i>');
+        me.html('Show');
       });
       return false;
     });

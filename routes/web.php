@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\VotingController::class, 'index'])->name('voting');
 Auth::routes();
-
+Route::get('/', [App\Http\Controllers\VotingController::class, 'index'])->name('voting');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('votings', App\Http\Controllers\VotingController::class);
