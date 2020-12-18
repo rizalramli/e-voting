@@ -11,7 +11,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="text" name="name" class="form-control form-control-sm" id="name">
+                                <input type="text" name="name" class="form-control form-control-sm" id="name" value="<?php echo set_value('name') ?>">
+                                <span class="text-danger"><?php echo form_error('name'); ?></span>
                             </div>
                         </div>
                     </div>
@@ -19,7 +20,9 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="description">Deskripsi</label>
-                                <input type="text" name="description" class="form-control form-control-sm" id="description">
+                                <input type="text" name="description" class="form-control form-control-sm" id="description" value="<?php echo set_value('description') ?>">
+                                <span class="text-danger"><?php echo form_error('description'); ?></span>
+
                             </div>
                         </div>
                     </div>
@@ -27,19 +30,22 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="date">Tanggal</label>
-                                <input type="text" name="date" class="form-control form-control-sm tanggal" id="date">
+                                <input type="text" name="date" class="form-control form-control-sm tanggal" id="date" value="<?php echo set_value('date') ?>">
+                                <span class="text-danger"><?php echo form_error('date'); ?></span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="start">Jam Mulai</label>
-                                <input type="text" name="start" class="form-control form-control-sm waktu" id="start">
+                                <input type="text" name="start" class="form-control form-control-sm waktu" id="start" value="<?php echo set_value('start') ?>">
+                                <span class="text-danger"><?php echo form_error('start'); ?></span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="end">Jam Selesai</label>
-                                <input type="text" name="end" class="form-control form-control-sm waktu" id="end">
+                                <input type="text" name="end" class="form-control form-control-sm waktu" id="end" value="<?php echo set_value('end') ?>">
+                                <span class="text-danger"><?php echo form_error('end'); ?></span>
                             </div>
                         </div>
                     </div>

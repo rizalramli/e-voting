@@ -61,3 +61,5 @@ $route['events'] = 'admin/EventController/index';
 $route['events/create'] = 'admin/EventController/create';
 $route['events/store'] = 'admin/EventController/store';
 $route['events/(:any)/show'] = 'admin/EventController/show/$1';
+$route['events/edit/(:any)'] = 'admin/EventController/editAjax/$1';
+$route['events/update'] = 'admin/EventController/updateAjax';

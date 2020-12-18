@@ -8,34 +8,32 @@
             <div class="card-header">
                 <h4>Detail Acara</h4>
                 <div class="card-header-action">
-                    <a href="#" class="btn btn-warning">Edit</a>
+                    <a href="javascript:void(0)" class="btn btn-warning" onclick="editEvent(<?php echo $item->id ?>)">Edit</a>
                     <a href="<?php echo base_url('events') ?>" class="btn btn-danger">Kembali</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <?php foreach ($items as $item) : ?>
-                        <div class="col">
-                            <h6>Nama</h6>
-                            <?php echo $item->name ?>
-                        </div>
-                        <div class="col">
-                            <h6>Keterangan</h6>
-                            <?php echo $item->description ?>
-                        </div>
-                        <div class="col">
-                            <h6>Tanggal</h6>
-                            <?php echo date('d F Y', strtotime($item->date))  ?>
-                        </div>
-                        <div class="col">
-                            <h6>Jam Mulai</h6>
-                            <?php echo date('H:i', strtotime($item->start)) ?>
-                        </div>
-                        <div class="col">
-                            <h6>Jam Selesai</h6>
-                            <?php echo date('H:i', strtotime($item->end)) ?>
-                        </div>
-                    <?php endforeach ?>
+                    <div class="col">
+                        <h6>Nama</h6>
+                        <?php echo $item->name ?>
+                    </div>
+                    <div class="col">
+                        <h6>Keterangan</h6>
+                        <?php echo $item->description ?>
+                    </div>
+                    <div class="col">
+                        <h6>Tanggal</h6>
+                        <?php echo date('d F Y', strtotime($item->date))  ?>
+                    </div>
+                    <div class="col">
+                        <h6>Jam Mulai</h6>
+                        <?php echo date('H:i', strtotime($item->start)) ?>
+                    </div>
+                    <div class="col">
+                        <h6>Jam Selesai</h6>
+                        <?php echo date('H:i', strtotime($item->end)) ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,3 +68,119 @@
         </div>
     </div>
 </section>
+<!-- Modal Edit -->
+<div class="modal fade" id="modal-form-event" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Acara</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form-event">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Nama</label>
+                                <input type="hidden" name="id">
+                                <input type="text" name="name" class="form-control form-control-sm" id="name" value="<?php echo set_value('name') ?>">
+                                <span class="help-block text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="description">Deskripsi</label>
+                                <input type="text" name="description" class="form-control form-control-sm" id="description" value="<?php echo set_value('description') ?>">
+                                <span class="help-block text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="date">Tanggal</label>
+                                <input type="text" name="date" class="form-control form-control-sm tanggal" id="date" value="<?php echo set_value('date') ?>">
+                                <span class="help-block text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="start">Jam Mulai</label>
+                                <input type="text" name="start" class="form-control form-control-sm waktu" id="start" value="<?php echo set_value('start') ?>">
+                                <span class="help-block text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="end">Jam Selesai</label>
+                                <input type="text" name="end" class="form-control form-control-sm waktu" id="end" value="<?php echo set_value('end') ?>">
+                                <span class="help-block text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" onclick="updateEvent()">Update</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+
+<script>
+    function editEvent(id) {
+        $('.form-group').removeClass('has-error');
+        $('.help-block').empty();
+
+        $.ajax({
+            url: "<?php echo base_url('events/edit/') ?>" + id,
+            type: "GET",
+            dataType: "JSON",
+            success: function(data) {
+                $('[name="id"]').val(data.id);
+                $('[name="name"]').val(data.name);
+                $('[name="description"]').val(data.description);
+                $('[name="date"]').val(data.date);
+                $('[name="start"]').val(data.start);
+                $('[name="end"]').val(data.end);
+                $('#modal-form-event').modal('show');
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error get data from ajax');
+            }
+        });
+    }
+
+    function updateEvent() {
+        $.ajax({
+            url: "<?php echo base_url('events/update') ?>",
+            type: "POST",
+            data: $('#form-event').serialize(),
+            dataType: "JSON",
+            success: function(data) {
+
+                if (data.status) {
+                    location.reload();
+                    $('#modal-form-event').modal('hide');
+                } else {
+                    for (var i = 0; i < data.inputerror.length; i++) {
+                        $('[name="' + data.inputerror[i] + '"]').parent().parent().addClass('has-error');
+                        $('[name="' + data.inputerror[i] + '"]').next().text(data.error_string[i]);
+                    }
+                }
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error adding / update data');
+
+            }
+        });
+    }
+</script>
