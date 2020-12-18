@@ -53,6 +53,10 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['login'] = 'LoginController/index';
+$route['login/store'] = 'LoginController/store';
+$route['logout'] = 'LoginController/logout';
+
 $route['events'] = 'admin/EventController/index';
 $route['events/create'] = 'admin/EventController/create';
 $route['events/store'] = 'admin/EventController/store';

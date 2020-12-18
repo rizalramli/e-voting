@@ -6,9 +6,7 @@ class EventController extends CI_Controller
     {
         parent::__construct();
         // if (!$this->session->userdata('id_user')) {
-        //     redirect('/');
-        // } else if ($this->session->userdata('akses') != 'Pimpinan') {
-        //     redirect('login/logout');
+        //     redirect('login');
         // }
         $this->load->model('M_crud');
     }
