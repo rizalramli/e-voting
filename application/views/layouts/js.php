@@ -20,4 +20,10 @@
     $('#dataTables').DataTable({
         ordering: false
     });
+    $('.tanggal').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('.waktu').datetimepicker({
+        format: 'HH:mm'
+    });
 </script>

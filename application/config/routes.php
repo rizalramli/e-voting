@@ -53,4 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['event'] = 'admin/EventController/index';
+$route['events'] = 'admin/EventController/index';
+$route['events/create'] = 'admin/EventController/create';
+$route['events/store'] = 'admin/EventController/store';
+$route['events/(:any)/show'] = 'admin/EventController/show/$1';

@@ -1,12 +1,12 @@
 <section class="section">
     <div class="section-header">
-        <h1>Event</h1>
+        <h1>Acara</h1>
     </div>
 
     <div class="section-body">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary" href="">Tambah</a>
+                <a class="btn btn-primary" href="<?php echo base_url('events/create') ?>">Tambah</a>
             </div>
             <div class="card-body">
                 <table width="100%" class="table table-sm table-striped" id="dataTables">
@@ -21,62 +21,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                        </tr>
-                        <tr>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                        </tr>
-                        <tr>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                        </tr>
-                        <tr>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                        </tr>
-                        <tr>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                        </tr>
-                        <tr>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                        </tr>
-                        <tr>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                            <td>asdsd</td>
-                        </tr>
+                        <?php foreach ($items as $item) : ?>
+                            <tr>
+                                <td><?php echo $item->name ?></td>
+                                <td><?php echo $item->description ?></td>
+                                <td><?php echo date('d F Y', strtotime($item->date))  ?></td>
+                                <td><?php echo date('H:i', strtotime($item->start)) ?></td>
+                                <td><?php echo date('H:i', strtotime($item->end)) ?></td>
+                                <td>
+                                    <a href="<?php echo base_url('events/' . $item->id . '/show') ?>" class="btn btn-sm btn-warning">Detail</a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
