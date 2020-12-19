@@ -70,3 +70,6 @@ $route['party/store'] = 'master/PartyController/store';
 $route['party/(:any)/edit'] = 'master/PartyController/edit/$1';
 $route['party/update'] = 'master/PartyController/update';
 $route['party/(:any)/delete'] = 'master/PartyController/delete/$1';
+
+$route['voter'] = 'master/VoterController/index';
+$route['voter/sendEmail'] = 'master/VoterController/sendEmail';
