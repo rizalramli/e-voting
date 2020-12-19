@@ -15,12 +15,12 @@ class VotingController extends CI_Controller
     {
         $table = 'voting';
         $data['items'] = $this->db->order_by('date', 'DESC')->get($table)->result();
-        $this->template->load('layouts/app', 'admin/voting/index', $data);
+        $this->template->load('layouts/app', 'master/voting/index', $data);
     }
 
     public function create()
     {
-        $this->template->load('layouts/app', 'admin/voting/create');
+        $this->template->load('layouts/app', 'master/voting/create');
     }
 
     public function store()
@@ -42,12 +42,12 @@ class VotingController extends CI_Controller
                 'start' => $start,
                 'end' => $end,
                 'is_active' => 0,
-                'admin_id' => $this->session->userdata('admin_id')
+                'master_id' => $this->session->userdata('master_id')
             );
             $this->M_crud->input_data($data, 'voting');
             redirect('voting');
         } else {
-            $this->template->load('layouts/app', 'admin/voting/create');
+            $this->template->load('layouts/app', 'master/voting/create');
         }
     }
 
@@ -55,7 +55,7 @@ class VotingController extends CI_Controller
     {
         $where = array('id' => $id);
         $data['item'] = $this->M_crud->edit_data($where, 'voting')->row();
-        $this->template->load('layouts/app', 'admin/voting/show', $data);
+        $this->template->load('layouts/app', 'master/voting/show', $data);
     }
 
     public function editAjax($id)

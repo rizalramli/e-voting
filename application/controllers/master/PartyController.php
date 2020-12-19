@@ -15,12 +15,12 @@ class PartyController extends CI_Controller
     {
         $table = 'party';
         $data['items'] = $this->db->order_by('name', 'ASC')->get($table)->result();
-        $this->template->load('layouts/app', 'admin/party/index', $data);
+        $this->template->load('layouts/app', 'master/party/index', $data);
     }
 
     public function create()
     {
-        $this->template->load('layouts/app', 'admin/party/create');
+        $this->template->load('layouts/app', 'master/party/create');
     }
 
     public function store()
@@ -42,7 +42,7 @@ class PartyController extends CI_Controller
             $this->M_crud->input_data($data, 'party');
             redirect('party');
         } else {
-            $this->template->load('layouts/app', 'admin/party/create');
+            $this->template->load('layouts/app', 'master/party/create');
         }
     }
 
@@ -50,14 +50,14 @@ class PartyController extends CI_Controller
     // {
     //     $where = array('id' => $id);
     //     $data['item'] = $this->M_crud->edit_data($where, 'voting')->row();
-    //     $this->template->load('layouts/app', 'admin/voting/show', $data);
+    //     $this->template->load('layouts/app', 'master/voting/show', $data);
     // }
 
     public function edit($id)
     {
         $where = array('id' => $id);
         $data['item'] = $this->M_crud->edit_data($where, 'party')->row();
-        $this->template->load('layouts/app', 'admin/party/edit', $data);
+        $this->template->load('layouts/app', 'master/party/edit', $data);
     }
 
     public function update()
@@ -93,7 +93,7 @@ class PartyController extends CI_Controller
             $this->M_crud->update_data($where, $data, 'party');
             redirect('party');
         } else {
-            $this->template->load('layouts/app', 'admin/party/edit', $data);
+            $this->template->load('layouts/app', 'master/party/edit', $data);
         }
     }
 
