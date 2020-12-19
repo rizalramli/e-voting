@@ -46,10 +46,12 @@ class VoterController extends CI_Controller
             // Lampiran email, isi dengan url/path file
             // $this->email->attach('https://masrud.com/content/images/20181215150137-codeigniter-smtp-gmail.png');
 
-            $this->email->subject('E-voting App');
+            $this->email->subject('Verify Email');
 
             // Isi email
-            $this->email->message("test.<br><br> Klik <strong><a href='http://localhost/e-voting/login' target='_blank' rel='noopener'>klik</a></strong>");
+            $body = $this->load->view('layouts/template_email', '', TRUE);
+            $this->email->message($body);
+            // $this->email->message("test.<br><br> Klik <strong><a href='http://localhost/e-voting/login' target='_blank' rel='noopener'>klik</a></strong>");
 
             $this->email->send();
 
@@ -57,7 +59,7 @@ class VoterController extends CI_Controller
                 'is_active' => 1,
             );
             $where = array(
-                'id' => $item->id
+                'voter_id' => $item->voter_id
             );
             $this->M_crud->update_data($where, $data, $table);
         }
