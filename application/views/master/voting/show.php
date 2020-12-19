@@ -59,7 +59,7 @@
                                     <td class="align-middle"><?php echo $item->name ?></td>
                                     <td class="align-middle"><?php echo $item->photo ?></td>
                                     <td class="align-middle">
-                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                        <a href="<?php echo base_url('candidate/' . $item->candidate_id . '/edit') ?>" class="btn btn-sm btn-warning">Edit</a>
                                         <a href="" class="btn btn-sm btn-danger">Hapus</a>
                                     </td>
                                 </tr>

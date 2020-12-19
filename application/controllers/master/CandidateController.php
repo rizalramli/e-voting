@@ -46,6 +46,57 @@ class CandidateController extends CI_Controller
         }
     }
 
+    public function edit($id)
+    {
+        $where = array('candidate_id' => $id);
+        $data['item'] = $this->M_crud->edit_data($where, 'candidate')->row();
+        $this->template->load('layouts/app', 'master/candidate/edit', $data);
+    }
+
+    public function update()
+    {
+        $this->form_validation->set_rules('name', 'Nama', 'required');
+        $this->form_validation->set_rules('old_photo', 'Foto', 'required');
+        $this->form_validation->set_rules('number', 'Number', 'required');
+
+        $candidate_id = $this->input->post('candidate_id');
+        $voting_id = $this->input->post('voting_id');
+        $name = $this->input->post('name');
+        $old_photo = $this->input->post('old_photo');
+        $number = $this->input->post('number');
+
+        // ambil data lama
+        $where = array(
+            'candidate_id' => $candidate_id,
+        );
+        $data['item'] = $this->M_crud->edit_data($where, 'candidate')->row();
+        // 
+
+        $photo_id = explode(".", $old_photo)[0];
+
+        if ($this->form_validation->run() != false) {
+            if (!empty($_FILES['photo']['name'])) {
+                $photo = $this->_uploadImage($photo_id);
+            } else {
+                $photo = $old_photo;
+            }
+
+            $data = array(
+                'name' => $name,
+                'photo' => $photo,
+                'number' => $number,
+            );
+            $where = array(
+                'candidate_id' => $candidate_id
+            );
+
+            $this->M_crud->update_data($where, $data, 'candidate');
+            redirect('voting/' . $voting_id . '/show');
+        } else {
+            $this->template->load('layouts/app', 'master/candidate/edit', $data);
+        }
+    }
+
     private function _uploadImage($photo_id)
     {
         $config['upload_path']          = './assets/photo/kandidat/';
