@@ -97,6 +97,26 @@ class CandidateController extends CI_Controller
         }
     }
 
+    public function delete($id)
+    {
+        $voting_id = "";
+        // ambil data
+        $where = array(
+            'candidate_id' => $id,
+        );
+        $query = $this->M_crud->edit_data($where, 'candidate');
+        if ($query->num_rows() > 0) {
+            $voting_id = $query->row('voting_id');
+        }
+
+        $data = array(
+            'is_active' => 0
+        );
+
+        $this->M_crud->update_data($where, $data, 'candidate');
+        redirect('voting/' . $voting_id . '/show');
+    }
+
     private function _uploadImage($photo_id)
     {
         $config['upload_path']          = './assets/photo/kandidat/';

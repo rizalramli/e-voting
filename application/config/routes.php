@@ -81,6 +81,7 @@ $route['election/(:any)/show'] = 'transaction/ElectionController/show/$1';
 
 $route['candidate']             = 'master/CandidateController/index';
 $route['candidate/(:any)/create'] = 'master/CandidateController/create/$1';
+$route['candidate/(:any)/delete'] = 'master/CandidateController/delete/$1';
 $route['candidate/store']       = 'master/CandidateController/store';
 $route['candidate/(:any)/edit']   = 'master/CandidateController/edit/$1';
 $route['candidate/(:any)/show'] = 'master/CandidateController/show/$1';
