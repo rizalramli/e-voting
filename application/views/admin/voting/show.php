@@ -8,8 +8,8 @@
             <div class="card-header">
                 <h4>Detail Acara</h4>
                 <div class="card-header-action">
-                    <a href="javascript:void(0)" class="btn btn-warning" onclick="editEvent(<?php echo $item->id ?>)">Edit</a>
-                    <a href="<?php echo base_url('events') ?>" class="btn btn-danger">Kembali</a>
+                    <a href="javascript:void(0)" class="btn btn-warning" onclick="editVoting(<?php echo $item->id ?>)">Edit</a>
+                    <a href="<?php echo base_url('voting') ?>" class="btn btn-danger">Kembali</a>
                 </div>
             </div>
             <div class="card-body">
@@ -17,10 +17,6 @@
                     <div class="col">
                         <h6>Nama</h6>
                         <?php echo $item->name ?>
-                    </div>
-                    <div class="col">
-                        <h6>Keterangan</h6>
-                        <?php echo $item->description ?>
                     </div>
                     <div class="col">
                         <h6>Tanggal</h6>
@@ -69,7 +65,7 @@
     </div>
 </section>
 <!-- Modal Edit -->
-<div class="modal fade" id="modal-form-event" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-form-voting" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -79,7 +75,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="form-event">
+                <form id="form-voting">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -87,16 +83,6 @@
                                 <input type="hidden" name="id">
                                 <input type="text" name="name" class="form-control form-control-sm" id="name" value="<?php echo set_value('name') ?>">
                                 <span class="help-block text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="description">Deskripsi</label>
-                                <input type="text" name="description" class="form-control form-control-sm" id="description" value="<?php echo set_value('description') ?>">
-                                <span class="help-block text-danger"></span>
-
                             </div>
                         </div>
                     </div>
@@ -126,7 +112,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" onclick="updateEvent()">Update</button>
+                <button type="button" class="btn btn-primary" onclick="updateVoting()">Update</button>
             </div>
             </form>
         </div>
@@ -135,22 +121,21 @@
 <!-- end modal -->
 
 <script>
-    function editEvent(id) {
+    function editVoting(id) {
         $('.form-group').removeClass('has-error');
         $('.help-block').empty();
 
         $.ajax({
-            url: "<?php echo base_url('events/edit/') ?>" + id,
+            url: "<?php echo base_url('voting/edit/') ?>" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
                 $('[name="id"]').val(data.id);
                 $('[name="name"]').val(data.name);
-                $('[name="description"]').val(data.description);
                 $('[name="date"]').val(data.date);
                 $('[name="start"]').val(data.start);
                 $('[name="end"]').val(data.end);
-                $('#modal-form-event').modal('show');
+                $('#modal-form-voting').modal('show');
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error get data from ajax');
@@ -158,17 +143,17 @@
         });
     }
 
-    function updateEvent() {
+    function updateVoting() {
         $.ajax({
-            url: "<?php echo base_url('events/update') ?>",
+            url: "<?php echo base_url('voting/update') ?>",
             type: "POST",
-            data: $('#form-event').serialize(),
+            data: $('#form-voting').serialize(),
             dataType: "JSON",
             success: function(data) {
 
                 if (data.status) {
                     location.reload();
-                    $('#modal-form-event').modal('hide');
+                    $('#modal-form-voting').modal('hide');
                 } else {
                     for (var i = 0; i < data.inputerror.length; i++) {
                         $('[name="' + data.inputerror[i] + '"]').parent().parent().addClass('has-error');

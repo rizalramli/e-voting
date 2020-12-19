@@ -20,17 +20,16 @@ class LoginController extends CI_Controller
             'username' => $username,
         );
 
-        $query = $this->M_crud->cek_login('users', $where);
+        $query = $this->M_crud->cek_login('admin', $where);
         if ($query->num_rows() > 0) {
             $hash = $query->row('password');
             if (password_verify($password, $hash)) {
                 $data_session = array(
-                    'id_user'   => $query->row('id'),
-                    'name' => $query->row('name'),
+                    'admin_id'   => $query->row('id'),
                     'username' => $query->row('username')
                 );
                 $this->session->set_userdata($data_session);
-                redirect('events');
+                redirect('voting');
             } else {
                 echo "Password salah !";
             }

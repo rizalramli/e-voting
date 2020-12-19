@@ -6,23 +6,13 @@
     <div class="section-body">
         <div class="card">
             <div class="card-body">
-                <form action="<?php echo base_url('events/store') ?>" method="post">
+                <form action="<?php echo base_url('voting/store') ?>" method="post">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="name">Nama</label>
                                 <input type="text" name="name" class="form-control form-control-sm" id="name" value="<?php echo set_value('name') ?>">
                                 <span class="text-danger"><?php echo form_error('name'); ?></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="description">Deskripsi</label>
-                                <input type="text" name="description" class="form-control form-control-sm" id="description" value="<?php echo set_value('description') ?>">
-                                <span class="text-danger"><?php echo form_error('description'); ?></span>
-
                             </div>
                         </div>
                     </div>
@@ -53,7 +43,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="<?php echo base_url('events') ?>" class="btn btn-default">Batal</a>
+                                <a href="<?php echo base_url('voting') ?>" class="btn btn-default">Batal</a>
                             </div>
                         </div>
                     </div>

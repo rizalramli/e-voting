@@ -1,6 +1,6 @@
 <?php
 
-class EventController extends CI_Controller
+class VotingController extends CI_Controller
 {
     function __construct()
     {
@@ -13,26 +13,24 @@ class EventController extends CI_Controller
 
     public function index()
     {
-        $table = 'events';
+        $table = 'voting';
         $data['items'] = $this->db->order_by('date', 'DESC')->get($table)->result();
-        $this->template->load('layouts/app', 'admin/event/index', $data);
+        $this->template->load('layouts/app', 'admin/voting/index', $data);
     }
 
     public function create()
     {
-        $this->template->load('layouts/app', 'admin/event/create');
+        $this->template->load('layouts/app', 'admin/voting/create');
     }
 
     public function store()
     {
         $name = $this->input->post('name');
-        $description = $this->input->post('description');
         $date = $this->input->post('date');
         $start = $this->input->post('date') . " " . $this->input->post('start');
         $end = $this->input->post('date') . " " . $this->input->post('end');
 
         $this->form_validation->set_rules('name', 'Nama', 'required');
-        $this->form_validation->set_rules('description', 'Keterangan', 'required');
         $this->form_validation->set_rules('date', 'Tanggal', 'required');
         $this->form_validation->set_rules('start', 'Jam Mulai', 'required');
         $this->form_validation->set_rules('end', 'Jam Selesai', 'required');
@@ -40,31 +38,30 @@ class EventController extends CI_Controller
         if ($this->form_validation->run() != false) {
             $data = array(
                 'name' => $name,
-                'description' => $description,
                 'date' => $date,
                 'start' => $start,
                 'end' => $end,
                 'is_active' => 0,
-                'user_id' => $this->session->userdata('id_user')
+                'admin_id' => $this->session->userdata('admin_id')
             );
-            $this->M_crud->input_data($data, 'events');
-            redirect('events');
+            $this->M_crud->input_data($data, 'voting');
+            redirect('voting');
         } else {
-            $this->template->load('layouts/app', 'admin/event/create');
+            $this->template->load('layouts/app', 'admin/voting/create');
         }
     }
 
     public function show($id)
     {
         $where = array('id' => $id);
-        $data['item'] = $this->M_crud->edit_data($where, 'events')->row();
-        $this->template->load('layouts/app', 'admin/event/show', $data);
+        $data['item'] = $this->M_crud->edit_data($where, 'voting')->row();
+        $this->template->load('layouts/app', 'admin/voting/show', $data);
     }
 
     public function editAjax($id)
     {
         $where = array('id' => $id);
-        $data = $this->M_crud->edit_data($where, 'events')->row();
+        $data = $this->M_crud->edit_data($where, 'voting')->row();
         $data->start = date('H:i', strtotime($data->start));
         $data->end = date('H:i', strtotime($data->end));
         echo json_encode($data);
@@ -75,14 +72,12 @@ class EventController extends CI_Controller
         $this->_validate();
         $id = $this->input->post('id');
         $name = $this->input->post('name');
-        $description = $this->input->post('description');
         $date = $this->input->post('date');
         $start = $this->input->post('date') . " " . $this->input->post('start');
         $end = $this->input->post('date') . " " . $this->input->post('end');
 
         $data = array(
             'name' => $name,
-            'description' => $description,
             'date' => $date,
             'start' => $start,
             'end' => $end,
@@ -92,7 +87,7 @@ class EventController extends CI_Controller
             'id' => $id
         );
 
-        $this->M_crud->update_data($where, $data, 'events');
+        $this->M_crud->update_data($where, $data, 'voting');
         echo json_encode(array("status" => TRUE));
     }
 
@@ -106,12 +101,6 @@ class EventController extends CI_Controller
         if ($this->input->post('name') == '') {
             $data['inputerror'][] = 'name';
             $data['error_string'][] = 'Nama is required';
-            $data['status'] = FALSE;
-        }
-
-        if ($this->input->post('description') == '') {
-            $data['inputerror'][] = 'description';
-            $data['error_string'][] = 'Keterangan is required';
             $data['status'] = FALSE;
         }
 
