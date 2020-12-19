@@ -53,8 +53,10 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['login'] = 'LoginController/index';
-$route['login/store'] = 'LoginController/store';
+$route['login'] = 'LoginController/indexVoter';
+$route['login/store_voter'] = 'LoginController/storeVoter';
+$route['login_admin'] = 'LoginController/indexAdmin';
+$route['login/store_admin'] = 'LoginController/storeAdmin';
 $route['logout'] = 'LoginController/logout';
 
 $route['voting'] = 'master/VotingController/index';
@@ -73,3 +75,7 @@ $route['party/(:any)/delete'] = 'master/PartyController/delete/$1';
 
 $route['voter'] = 'master/VoterController/index';
 $route['voter/sendEmail'] = 'master/VoterController/sendEmail';
+
+$route['election'] = 'transaction/ElectionController/index';
+$route['election/(:any)/show'] = 'transaction/ElectionController/show/$1';
+

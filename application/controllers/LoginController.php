@@ -7,12 +7,45 @@ class LoginController extends CI_Controller
         $this->load->model('M_crud');
     }
 
-    public function index()
+    public function indexVoter()
     {
-        $this->load->view('login');
+        $this->load->view('login/login_voter');
     }
 
-    public function store()
+    public function storeVoter()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $where    = array(
+            'email'  => $email,
+            'is_active' => 1,
+        );
+
+        $query = $this->M_crud->edit_data($where, 'voter');
+        if ($query->num_rows() > 0) {
+            $hash = $query->row('password');
+            if (password_verify($password, $hash)) {
+                $data_session = array(
+                    'admin_id' => $query->row('admin_id'),
+                    'email' => $query->row('email'),
+                    'name' => $query->row('name'),
+                );
+                $this->session->set_userdata($data_session);
+                redirect('election');
+            } else {
+                echo "Password salah !";
+            }
+        } else {
+            echo "Email salah !";
+        }
+    }
+
+    public function indexAdmin()
+    {
+        $this->load->view('login/login_admin');
+    }
+
+    public function storeAdmin()
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
