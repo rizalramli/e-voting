@@ -74,7 +74,6 @@
             <div class="card-header">
                 <h4>Pemilih (0)</h4>
                 <div class="card-header-action">
-                    <a class="btn btn-primary" href="#">Tambah</a>
                     <a data-collapse="#mycard-collapse2" class="btn btn-icon btn-info" href="#">Show</a>
                 </div>
             </div>
