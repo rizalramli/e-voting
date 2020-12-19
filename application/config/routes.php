@@ -63,3 +63,10 @@ $route['voting/store'] = 'admin/VotingController/store';
 $route['voting/(:any)/show'] = 'admin/VotingController/show/$1';
 $route['voting/edit/(:any)'] = 'admin/VotingController/editAjax/$1';
 $route['voting/update'] = 'admin/VotingController/updateAjax';
+
+$route['party'] = 'admin/PartyController/index';
+$route['party/create'] = 'admin/PartyController/create';
+$route['party/store'] = 'admin/PartyController/store';
+$route['party/(:any)/edit'] = 'admin/PartyController/edit/$1';
+$route['party/update'] = 'admin/PartyController/update';
+$route['party/(:any)/delete'] = 'admin/PartyController/delete/$1';
