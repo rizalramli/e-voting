@@ -12,6 +12,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <input type="hidden" name="voting_id" id="voting_id" value="<?php echo $voting_id ?>">
                                         <label for="number">Nomor Urut</label>
                                         <input type="text" name="number" class="form-control form-control-sm" id="number" value="<?php echo set_value('number') ?>">
                                         <span class="text-danger"><?php echo form_error('number'); ?></span>
@@ -44,7 +45,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="#" onclick= "goBack()" class="btn btn-default">Batal</a>
+                                <a href="#" onclick="goBack()" class="btn btn-default">Batal</a>
                             </div>
                         </div>
                     </div>
