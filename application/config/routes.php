@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | and its corresponding controller class/method. The segments in a
 | URL normally follow this pattern:
 |
-|	example.com/class/method/id/
+|    example.com/class/method/id/
 |
 | In some instances, however, you may want to remap this relationship
 | so that a different class/function is called than the one
@@ -19,7 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
-|	https://codeigniter.com/user_guide/general/routing.html
+|    https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -27,18 +27,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 | There are three reserved routes:
 |
-|	$route['default_controller'] = 'welcome';
+|    $route['default_controller'] = 'welcome';
 |
 | This route indicates which controller class should be loaded if the
 | URI contains no data. In the above example, the "welcome" class
 | would be loaded.
 |
-|	$route['404_override'] = 'errors/page_missing';
+|    $route['404_override'] = 'errors/page_missing';
 |
 | This route will tell the Router which controller/method to use if those
 | provided in the URL cannot be matched to a valid route.
 |
-|	$route['translate_uri_dashes'] = FALSE;
+|    $route['translate_uri_dashes'] = FALSE;
 |
 | This is not exactly a route, but allows you to automatically route
 | controller and method names that contain dashes. '-' isn't a valid
@@ -46,36 +46,42 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | When you set this option to TRUE, it will replace ALL dashes in the
 | controller and method URI segments.
 |
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
-*/
-$route['default_controller'] = 'welcome';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+| Examples:    my-controller/index    -> my_controller/index
+|        my-controller/my-method    -> my_controller/my_method
+ */
+$route['default_controller']   = 'welcome';
+$route['404_override']         = '';
+$route['translate_uri_dashes'] = false;
 
-$route['login'] = 'LoginController/indexVoter';
+$route['login']             = 'LoginController/indexVoter';
 $route['login/store_voter'] = 'LoginController/storeVoter';
-$route['login_admin'] = 'LoginController/indexAdmin';
+$route['login_admin']       = 'LoginController/indexAdmin';
 $route['login/store_admin'] = 'LoginController/storeAdmin';
-$route['logout'] = 'LoginController/logout';
+$route['logout']            = 'LoginController/logout';
 
-$route['voting'] = 'master/VotingController/index';
-$route['voting/create'] = 'master/VotingController/create';
-$route['voting/store'] = 'master/VotingController/store';
+$route['voting']             = 'master/VotingController/index';
+$route['voting/create']      = 'master/VotingController/create';
+$route['voting/store']       = 'master/VotingController/store';
 $route['voting/(:any)/show'] = 'master/VotingController/show/$1';
 $route['voting/edit/(:any)'] = 'master/VotingController/editAjax/$1';
-$route['voting/update'] = 'master/VotingController/updateAjax';
+$route['voting/update']      = 'master/VotingController/updateAjax';
 
-$route['party'] = 'master/PartyController/index';
-$route['party/create'] = 'master/PartyController/create';
-$route['party/store'] = 'master/PartyController/store';
-$route['party/(:any)/edit'] = 'master/PartyController/edit/$1';
-$route['party/update'] = 'master/PartyController/update';
+$route['party']               = 'master/PartyController/index';
+$route['party/create']        = 'master/PartyController/create';
+$route['party/store']         = 'master/PartyController/store';
+$route['party/(:any)/edit']   = 'master/PartyController/edit/$1';
+$route['party/update']        = 'master/PartyController/update';
 $route['party/(:any)/delete'] = 'master/PartyController/delete/$1';
 
-$route['voter'] = 'master/VoterController/index';
+$route['voter']           = 'master/VoterController/index';
 $route['voter/sendEmail'] = 'master/VoterController/sendEmail';
 
-$route['election'] = 'transaction/ElectionController/index';
+$route['election']             = 'transaction/ElectionController/index';
 $route['election/(:any)/show'] = 'transaction/ElectionController/show/$1';
 
+$route['candidate']             = 'master/CandidateController/index';
+$route['candidate/create']      = 'master/CandidateController/create';
+$route['candidate/store']       = 'master/CandidateController/store';
+$route['candidate/(:any)/show'] = 'master/CandidateController/show/$1';
+$route['candidate/edit/(:any)'] = 'master/CandidateController/editAjax/$1';
+$route['candidate/update']      = 'master/CandidateController/updateAjax';
