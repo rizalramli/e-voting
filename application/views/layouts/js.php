@@ -26,4 +26,11 @@
     $('.waktu').datetimepicker({
         format: 'HH:mm'
     });
+    $('.dataTables').DataTable({
+        ordering: false
+    });
+
+    function goBack() {
+        window.history.back();
+    }
 </script>

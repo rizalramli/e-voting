@@ -10,9 +10,9 @@ class CandidateController extends CI_Controller
         $this->load->model('M_crud');
     }
 
-    public function index()
+    public function create()
     {
-        $this->template->load('layouts/app', 'master/candidate/index');
+        $this->template->load('layouts/app', 'master/candidate/create');
     }
 
 }

@@ -37,13 +37,13 @@
             <div class="card-header">
                 <h4>Kandidat</h4>
                 <div class="card-header-action">
-                    <a class="btn btn-primary" href="#">Tambah</a>
+                    <a class="btn btn-primary" href="<?php echo base_url('candidate/create') ?>">Tambah</a>
                     <a data-collapse="#mycard-collapse" class="btn btn-icon btn-info" href="#">Show</a>
                 </div>
             </div>
             <div class="collapse hidden" id="mycard-collapse">
                 <div class="card-body">
-                <table width="100%" class="table table-sm table-striped" id="dataTables">
+                <table width="100%" class="table table-sm table-striped dataTables">
                     <thead>
                         <tr>
                             <th scope="col">Nomor Urut</th>
@@ -59,7 +59,8 @@
                                 <td class="align-middle"><?php echo $item->name ?></td>
                                 <td class="align-middle"><?php echo $item->photo ?></td>
                                 <td class="align-middle">
-                                    <a href="" class="btn btn-sm btn-warning">Hapus</a>
+                                    <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="" class="btn btn-sm btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach?>
@@ -71,7 +72,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h4>Pemilih</h4>
+                <h4>Pemilih (0)</h4>
                 <div class="card-header-action">
                     <a class="btn btn-primary" href="#">Tambah</a>
                     <a data-collapse="#mycard-collapse2" class="btn btn-icon btn-info" href="#">Show</a>
@@ -79,7 +80,18 @@
             </div>
             <div class="collapse hidden" id="mycard-collapse2">
                 <div class="card-body">
-                    You can show or hide this card.
+                    <table width="100%" class="table table-sm table-striped dataTables">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nomor</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
                 </div>
             </div>
         </div>
