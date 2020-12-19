@@ -23,7 +23,9 @@
                             <div class="card-body">
                                 <form action="<?php echo base_url('login/store_admin') ?>" method="post">
                                     <div class="form-group">
-                                        <label for="username">Username</label>
+                                        <div class="d-block">
+                                            <label for="username">Username</label>
+                                        </div>
                                         <input id="username" type="text" class="form-control form-control-sm" name="username">
 
                                     </div>

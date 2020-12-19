@@ -23,8 +23,8 @@
                                 <td><?php echo $item->name ?></td>
                                 <td><img width="100px" height="100px" src="<?php echo base_url(); ?>assets/photo/partai/<?php echo $item->photo ?>" alt=""></td>
                                 <td>
-                                    <a href="<?php echo base_url('party/' . $item->id . '/edit') ?>" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?php echo base_url('party/' . $item->id . '/delete') ?>" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="<?php echo base_url('party/' . $item->party_id . '/edit') ?>" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="<?php echo base_url('party/' . $item->party_id . '/delete') ?>" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

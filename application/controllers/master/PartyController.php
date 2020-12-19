@@ -46,16 +46,9 @@ class PartyController extends CI_Controller
         }
     }
 
-    // public function show($id)
-    // {
-    //     $where = array('id' => $id);
-    //     $data['item'] = $this->M_crud->edit_data($where, 'voting')->row();
-    //     $this->template->load('layouts/app', 'master/voting/show', $data);
-    // }
-
     public function edit($id)
     {
-        $where = array('id' => $id);
+        $where = array('party_id' => $id);
         $data['item'] = $this->M_crud->edit_data($where, 'party')->row();
         $this->template->load('layouts/app', 'master/party/edit', $data);
     }
@@ -64,9 +57,9 @@ class PartyController extends CI_Controller
     {
         $this->form_validation->set_rules('name', 'Nama', 'required');
 
-        $id = $this->input->post('id');
+        $id = $this->input->post('party_id');
         // ambil data lama
-        $where = array('id' => $id);
+        $where = array('party_id' => $id);
         $data['item'] = $this->M_crud->edit_data($where, 'party')->row();
         // 
 
@@ -87,7 +80,7 @@ class PartyController extends CI_Controller
                 'photo' => $photo,
             );
             $where = array(
-                'id' => $id
+                'party_id' => $id
             );
 
             $this->M_crud->update_data($where, $data, 'party');
@@ -99,7 +92,7 @@ class PartyController extends CI_Controller
 
     public function delete($id)
     {
-        $where = array('id' => $id);
+        $where = array('party_id' => $id);
         $this->_deleteImage($id);
         $this->M_crud->hapus_data($where, 'party');
         redirect('party');
@@ -121,7 +114,7 @@ class PartyController extends CI_Controller
 
     private function _deleteImage($id)
     {
-        $where = array('id' => $id);
+        $where = array('party_id' => $id);
         $data = $this->M_crud->edit_data($where, 'party')->row();
         $filename = explode(".", $data->photo)[0];
         return array_map('unlink', glob(FCPATH . "assets/photo/partai/$filename.*"));

@@ -23,7 +23,10 @@
                             <div class="card-body">
                                 <form action="<?php echo base_url('login/store_voter') ?>" method="post">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
+                                        <div class="d-block">
+
+                                            <label for="email">Email</label>
+                                        </div>
                                         <input id="email" type="text" class="form-control form-control-sm" name="email">
 
                                     </div>

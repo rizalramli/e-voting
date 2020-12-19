@@ -13,7 +13,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <!-- hidden -->
-                                        <input type="hidden" name="id" value="<?php echo $item->id ?>">
+                                        <input type="hidden" name="party_id" value="<?php echo $item->party_id ?>">
                                         <input type="hidden" name="old_photo" value="<?php echo $item->photo ?>">
 
                                         <label for="name">Nama</label>
