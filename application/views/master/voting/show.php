@@ -43,7 +43,28 @@
             </div>
             <div class="collapse hidden" id="mycard-collapse">
                 <div class="card-body">
-                    You can show or hide this card.
+                <table width="100%" class="table table-sm table-striped" id="dataTables">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nomor Urut</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($candidate_item as $item): ?>
+                            <tr>
+                                <td class="align-middle"><?php echo $item->number ?></td>
+                                <td class="align-middle"><?php echo $item->name ?></td>
+                                <td class="align-middle"><?php echo $item->photo ?></td>
+                                <td class="align-middle">
+                                    <a href="" class="btn btn-sm btn-warning">Hapus</a>
+                                </td>
+                            </tr>
+                        <?php endforeach?>
+                    </tbody>
+                </table>
                 </div>
             </div>
         </div>

@@ -57,8 +57,15 @@ class VotingController extends CI_Controller
 
     public function show($id)
     {
-        $where        = array('voting_id' => $id);
-        $data['item'] = $this->M_crud->edit_data($where, 'voting')->row();
+        $voting_id    = array('voting_id' => $id);
+        $data['item'] = $this->M_crud->edit_data($voting_id, 'voting')->row();
+
+        $where = array(
+            'is_active' => 1,
+            'voting_id' => $id,
+        );
+        $data['candidate_item'] = $this->M_crud->edit_data($where, 'candidate')->result();
+
         $this->template->load('layouts/app', 'master/voting/show', $data);
     }
 
