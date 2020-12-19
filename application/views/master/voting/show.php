@@ -8,7 +8,7 @@
             <div class="card-header">
                 <h4>Detail Acara</h4>
                 <div class="card-header-action">
-                    <a href="javascript:void(0)" class="btn btn-warning" onclick="editVoting(<?php echo $item->id ?>)">Edit</a>
+                    <a href="javascript:void(0)" class="btn btn-warning" onclick="editVoting(<?php echo $item->voting_id ?>)">Edit</a>
                     <a href="<?php echo base_url('voting') ?>" class="btn btn-danger">Kembali</a>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="col">
                         <h6>Tanggal</h6>
-                        <?php echo date('d F Y', strtotime($item->date))  ?>
+                        <?php echo date('d F Y', strtotime($item->date)) ?>
                     </div>
                     <div class="col">
                         <h6>Jam Mulai</h6>
@@ -80,7 +80,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="name">Nama</label>
-                                <input type="hidden" name="id">
+                                <input type="hidden" name="voting_id">
                                 <input type="text" name="name" class="form-control form-control-sm" id="name" value="<?php echo set_value('name') ?>">
                                 <span class="help-block text-danger"></span>
                             </div>
@@ -130,7 +130,7 @@
             type: "GET",
             dataType: "JSON",
             success: function(data) {
-                $('[name="id"]').val(data.id);
+                $('[name="voting_id"]').val(data.id);
                 $('[name="name"]').val(data.name);
                 $('[name="date"]').val(data.date);
                 $('[name="start"]').val(data.start);
