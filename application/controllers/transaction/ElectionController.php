@@ -15,15 +15,13 @@ class ElectionController extends CI_Controller
     {
         $table = 'voting';
         $data['items'] = $this->db->order_by('name', 'ASC')->get($table)->result();
-        $this->load->view('transaction/election/index',$data);
+        $this->load->view('transaction/election/index', $data);
     }
 
     public function show($id)
     {
         $where = array('voting_id' => $id);
         $data['items'] = $this->M_crud->edit_data($where, 'candidate')->result();
-        $this->load->view('transaction/election/show',$data);
-
+        $this->load->view('transaction/election/show', $data);
     }
-
 }
