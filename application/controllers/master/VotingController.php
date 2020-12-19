@@ -13,8 +13,12 @@ class VotingController extends CI_Controller
 
     public function index()
     {
-        $table         = 'voting';
-        $data['items'] = $this->db->order_by('date', 'DESC')->get($table)->result();
+        $where = array(
+            'is_active' => 1,
+        );
+        $table = 'voting';
+
+        $data['items'] = $this->M_crud->edit_data($where, $table)->result();
         $this->template->load('layouts/app', 'master/voting/index', $data);
     }
 
@@ -42,7 +46,7 @@ class VotingController extends CI_Controller
                 'start'     => $start,
                 'end'       => $end,
                 'is_active' => 1,
-                'admin_id' => $this->session->userdata('admin_id'),
+                'admin_id'  => $this->session->userdata('admin_id'),
             );
             $this->M_crud->input_data($data, 'voting');
             redirect('voting');
@@ -60,7 +64,7 @@ class VotingController extends CI_Controller
 
     public function editAjax($id)
     {
-        $where       = array('id' => $id);
+        $where       = array('voting_id' => $id);
         $data        = $this->M_crud->edit_data($where, 'voting')->row();
         $data->start = date('H:i', strtotime($data->start));
         $data->end   = date('H:i', strtotime($data->end));
@@ -70,11 +74,11 @@ class VotingController extends CI_Controller
     public function updateAjax()
     {
         $this->_validate();
-        $id    = $this->input->post('id');
-        $name  = $this->input->post('name');
-        $date  = $this->input->post('date');
-        $start = $this->input->post('date') . " " . $this->input->post('start');
-        $end   = $this->input->post('date') . " " . $this->input->post('end');
+        $voting_id = $this->input->post('voting_id');
+        $name      = $this->input->post('name');
+        $date      = $this->input->post('date');
+        $start     = $this->input->post('date') . " " . $this->input->post('start');
+        $end       = $this->input->post('date') . " " . $this->input->post('end');
 
         $data = array(
             'name'  => $name,
@@ -84,7 +88,7 @@ class VotingController extends CI_Controller
         );
 
         $where = array(
-            'id' => $id,
+            'voting_id' => $voting_id,
         );
 
         $this->M_crud->update_data($where, $data, 'voting');

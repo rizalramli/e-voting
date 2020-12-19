@@ -130,7 +130,7 @@
             type: "GET",
             dataType: "JSON",
             success: function(data) {
-                $('[name="voting_id"]').val(data.id);
+                $('[name="voting_id"]').val(data.voting_id);
                 $('[name="name"]').val(data.name);
                 $('[name="date"]').val(data.date);
                 $('[name="start"]').val(data.start);
