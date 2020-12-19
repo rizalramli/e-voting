@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 19 Des 2020 pada 03.04
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.4.9
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 19 Des 2020 pada 11.05
+-- Versi server: 10.4.13-MariaDB
+-- Versi PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `password` varchar(60) NOT NULL,
   `is_active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,25 +41,12 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `candidate` (
-  `id` int(11) NOT NULL,
-  `number` tinyint(3) NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `voting_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `candidate_detail`
---
-
-CREATE TABLE `candidate_detail` (
-  `id` int(11) NOT NULL,
+  `candidate_id` int(11) NOT NULL,
+  `voting_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `candidate_status` enum('Ketua','Wakil') NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `candidate_id` int(11) NOT NULL
+  `number` tinyint(3) NOT NULL,
+  `is_active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -69,7 +56,7 @@ CREATE TABLE `candidate_detail` (
 --
 
 CREATE TABLE `election` (
-  `id` int(11) NOT NULL,
+  `election_id` int(11) NOT NULL,
   `candidate_id` int(11) NOT NULL,
   `voter_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -81,7 +68,7 @@ CREATE TABLE `election` (
 --
 
 CREATE TABLE `member` (
-  `id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
   `candidate_id` int(11) NOT NULL,
   `party_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -93,7 +80,7 @@ CREATE TABLE `member` (
 --
 
 CREATE TABLE `party` (
-  `id` int(11) NOT NULL,
+  `party_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `is_active` tinyint(1) NOT NULL
@@ -106,11 +93,11 @@ CREATE TABLE `party` (
 --
 
 CREATE TABLE `voter` (
-  `id` int(11) NOT NULL,
+  `voter_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `voter_status` enum('Belum Memilih','Sudah Memilih') NOT NULL,
+  `voter_status` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -121,13 +108,13 @@ CREATE TABLE `voter` (
 --
 
 CREATE TABLE `voting` (
-  `id` int(11) NOT NULL,
+  `voting_id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `admin_id` int(11) NOT NULL
+  `is_active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -138,49 +125,43 @@ CREATE TABLE `voting` (
 -- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indeks untuk tabel `candidate`
 --
 ALTER TABLE `candidate`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `candidate_detail`
---
-ALTER TABLE `candidate_detail`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`candidate_id`);
 
 --
 -- Indeks untuk tabel `election`
 --
 ALTER TABLE `election`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`election_id`);
 
 --
 -- Indeks untuk tabel `member`
 --
 ALTER TABLE `member`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`member_id`);
 
 --
 -- Indeks untuk tabel `party`
 --
 ALTER TABLE `party`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`party_id`);
 
 --
 -- Indeks untuk tabel `voter`
 --
 ALTER TABLE `voter`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`voter_id`);
 
 --
 -- Indeks untuk tabel `voting`
 --
 ALTER TABLE `voting`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`voting_id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -190,49 +171,43 @@ ALTER TABLE `voting`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `candidate`
 --
 ALTER TABLE `candidate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `candidate_detail`
---
-ALTER TABLE `candidate_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `candidate_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `election`
 --
 ALTER TABLE `election`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `election_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `party`
 --
 ALTER TABLE `party`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `party_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `voter`
 --
 ALTER TABLE `voter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `voter_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `voting`
 --
 ALTER TABLE `voting`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `voting_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
