@@ -29,4 +29,18 @@ class ElectionController extends CI_Controller
         $data['items'] = $this->M_crud->edit_data($where, 'candidate')->result();
         $this->load->view('transaction/election/show', $data);
     }
+
+    public function storeAjax()
+    {
+        $candidate_id = $this->input->post('candidate_id');
+        $voter_id = $this->session->userdata('voter_id');
+
+        $data = array(
+            'candidate_id' => $candidate_id,
+            'voter_id' => $voter_id
+        );
+
+        $this->M_crud->input_data($data, 'election');
+        echo json_encode(array("status" => true));
+    }
 }

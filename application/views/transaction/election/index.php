@@ -79,7 +79,7 @@
 
                             <?php
                             $i = 0;
-                            $election_validation = '';
+                            $election_validation = '<span class="badge badge-danger">Belum Memilih</span>';
                             $done = false;
 
                             foreach ($election_item as $item2) :
@@ -87,8 +87,6 @@
                               if ($item->voting_id == $item2->voting_id) {
                                 $election_validation = '<span class="badge badge-success">Sudah Memilih</span>';
                                 $done = true;
-                              } else {
-                                $election_validation = '<span class="badge badge-danger">Belum Memilih</span>';
                               }
 
                               $i++;

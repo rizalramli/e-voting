@@ -101,7 +101,7 @@
                                             <h3 class="card-title"><?php echo $item->number ?></h3>
                                             <h6 class="card-title"><?php echo $item->name ?></h6>
 
-                                            <a href="#" class="btn btn-primary stretched-link mt-3">Pilih</a>
+                                            <button onclick="storeElection(<?php echo $item->candidate_id ?>)" class="btn btn-primary stretched-link mt-3">Pilih</button>
                                         </div>
                                     </div>
                                 </div>
@@ -142,6 +142,31 @@
 
     <!-- panggil assets js -->
     <?php $this->load->view('layouts/js.php'); ?>
+
+    <script>
+        function storeElection(candidate_id) {
+            $.ajax({
+                url: "<?php echo base_url() . 'election/store'; ?>",
+                type: 'post',
+                data: {
+                    candidate_id: candidate_id
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    if (data.status) {
+                        window.history.back();
+                    } else {
+                        alert('Gagal Melakukan Pemilihan');
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error adding / update data');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
