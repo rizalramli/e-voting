@@ -55,9 +55,13 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-body">
+                        <div class="float-left">
+                            <button class="btn btn-danger" onclick="goBack()">Kembali</button>
+                        </div>
+                        <h3 class="text-center">Pemilihan BEM 2020</h3>
                         <div class="row justify-content-center">
                             <?php foreach ($items as $item) : ?>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="card">
                                         <div class="row py-2 px-2">
                                             <div class="col-3 col-sm-3 col-lg-3 mb-1">

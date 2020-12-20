@@ -26,8 +26,13 @@ class ElectionController extends CI_Controller
     public function show($id)
     {
         $where = array('voting_id' => $id);
-        $data['items'] = $this->M_crud->edit_data($where, 'candidate')->result();
-        $this->load->view('transaction/election/show', $data);
+        if ($id == 1) {
+            $data['items'] = $this->M_crud->edit_data($where, 'candidate')->result();
+            $this->load->view('transaction/election/show', $data);
+        } else {
+            // $data['items'] = $this->M_crud->edit_data($where, 'candidate')->result();
+            $this->load->view('transaction/election/show2');
+        }
     }
 
     public function storeAjax()
