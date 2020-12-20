@@ -22,7 +22,7 @@ class VoterController extends CI_Controller
     public function sendEmail()
     {
         $table = 'voter';
-        $where = array('is_active' => 0);
+        $where = array('send_status' => 0);
         $voter = $this->M_crud->edit_data($where, $table)->result();
 
         $config = [
@@ -58,7 +58,7 @@ class VoterController extends CI_Controller
             $this->email->send();
 
             $data = array(
-                'is_active' => 1,
+                'send_status' => 1,
             );
             $where = array(
                 'voter_id' => $item->voter_id
