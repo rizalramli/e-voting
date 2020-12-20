@@ -36,10 +36,12 @@
                                             <label for="password">Password</label>
                                         </div>
                                         <input id="password" type="password" class="form-control form-control-sm" name="password">
+
                                         <div class="custom-control custom-checkbox mt-2">
-                                            <input onclick="myFunction()" type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                                            <input onclick="showPassword()" type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
                                             <label class="custom-control-label" for="remember-me">Show Password</label>
                                         </div>
+
                                         <span class="text-danger"><?php echo form_error('password'); ?></span>
                                     </div>
 
@@ -59,7 +61,7 @@
     <!-- panggil assets js -->
     <?php $this->load->view('layouts/js.php'); ?>
     <script>
-        function myFunction() {
+        function showPassword() {
             var x = document.getElementById("password");
             if (x.type === "password") {
                 x.type = "text";

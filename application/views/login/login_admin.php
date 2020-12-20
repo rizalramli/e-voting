@@ -36,20 +36,17 @@
                                         </div>
                                         <input id="password" type="password" class="form-control form-control-sm" name="password">
 
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                                            <label class="custom-control-label" for="remember-me">Remember Me</label>
+                                        <div class="custom-control custom-checkbox mt-2">
+                                            <input onclick="showPassword()" type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                                            <label class="custom-control-label" for="remember-me">Show Password</label>
                                         </div>
+
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block" tabindex="4">
                                             Login
                                         </button>
-                                        <a class="btn btn-secondary btn-block" href="">Register</a>
                                     </div>
                                 </form>
                             </div>
@@ -61,6 +58,16 @@
     </div>
     <!-- panggil assets js -->
     <?php $this->load->view('layouts/js.php'); ?>
+    <script>
+        function showPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 </body>
 
 </html>
