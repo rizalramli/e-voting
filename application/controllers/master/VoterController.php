@@ -9,7 +9,7 @@ class VoterController extends CI_Controller
         //     redirect('login');
         // }
         $this->load->model('M_crud');
-        $this->load->library('encryption');
+        // $this->load->library('encryption');
     }
 
     public function index()
@@ -121,5 +121,14 @@ class VoterController extends CI_Controller
             $data['email'] = $email;
             $this->load->view('master/voter/verify', $data);
         }
+    }
+
+    public function test()
+    {
+        $key = 'Welcome';
+        $this->load->library('encrypt');
+        $key1 = $this->encrypt->encode($key);
+
+        echo $key1;
     }
 }
