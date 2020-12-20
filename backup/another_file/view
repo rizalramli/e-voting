@@ -21,3 +21,14 @@ FROM
     party p USING(party_id) JOIN
     candidate c USING(candidate_id)
 ORDER BY c.number ASC;
+
+CREATE VIEW view_recapitulation_candidate AS
+SELECT 
+    e.election_id, 
+    c.candidate_id, c.name AS candidate_name, COUNT(c.candidate_id) AS election_total, 
+    v.voting_id
+FROM 
+    election e JOIN 
+    candidate c USING(candidate_id) JOIN
+    voting v USING(voting_id)
+GROUP BY c.candidate_id;
