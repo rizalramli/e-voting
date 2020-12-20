@@ -14,14 +14,19 @@
                 <table width="100%" class="table table-sm table-striped" id="dataTables">
                     <thead>
                         <tr>
+                            <th scope="col">No</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">Status Verifikasi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($items as $item) : ?>
+                        <?php
+                        $i = 1;
+                        foreach ($items as $item) :
+                        ?>
                             <tr>
+                                <td><?php echo $i ?></td>
                                 <td><?php echo $item->name ?></td>
                                 <td><?php echo $item->email ?></td>
                                 <td>
@@ -32,7 +37,11 @@
                                     } ?>
                                 </td>
                             </tr>
-                        <?php endforeach ?>
+                        <?php
+
+                            $i++;
+                        endforeach
+                        ?>
                     </tbody>
                 </table>
             </div>
