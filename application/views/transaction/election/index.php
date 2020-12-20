@@ -155,7 +155,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-          <a href="<?php echo base_url('logout') ?>" class="btn btn-primary">Logout</a>
+          <a href="<?php echo base_url('logout_voter') ?>" class="btn btn-primary">Logout</a>
         </div>
       </div>
     </div>

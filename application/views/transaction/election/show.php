@@ -101,7 +101,7 @@
                                             <h3 class="card-title"><?php echo $item->number ?></h3>
                                             <h6 class="card-title"><?php echo $item->name ?></h6>
 
-                                            <button onclick="storeElection(<?php echo $item->candidate_id ?>)" class="btn btn-primary stretched-link mt-3">Pilih</button>
+                                            <button onclick="storeElection(<?php echo $item->candidate_id ?>, '<?php echo $item->name ?>')" class="btn btn-primary stretched-link mt-3">Pilih</button>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <a href="<?php echo base_url('logout') ?>" class="btn btn-primary">Logout</a>
+                    <a href="<?php echo base_url('logout_voter') ?>" class="btn btn-primary">Logout</a>
                 </div>
             </div>
         </div>
@@ -144,27 +144,31 @@
     <?php $this->load->view('layouts/js.php'); ?>
 
     <script>
-        function storeElection(candidate_id) {
-            $.ajax({
-                url: "<?php echo base_url() . 'election/store'; ?>",
-                type: 'post',
-                data: {
-                    candidate_id: candidate_id
-                },
-                dataType: "JSON",
-                success: function(data) {
+        function storeElection(candidate_id, name) {
+            var result = confirm("Anda Ingin Memilih Kandidat " + name + " ?");
+            if (result) {
+                $.ajax({
+                    url: "<?php echo base_url() . 'election/store'; ?>",
+                    type: 'post',
+                    data: {
+                        candidate_id: candidate_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
 
-                    if (data.status) {
-                        window.history.back();
-                    } else {
-                        alert('Gagal Melakukan Pemilihan');
+                        if (data.status) {
+                            alert('Berhasil Memilih Kandidat');
+                            window.history.back();
+                        } else {
+                            alert('Gagal Melakukan Pemilihan');
+                        }
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Error adding / update data');
                     }
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Error adding / update data');
-                }
-            });
+                });
+            }
         }
     </script>
 </body>
