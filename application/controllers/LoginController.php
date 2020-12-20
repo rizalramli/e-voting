@@ -33,10 +33,12 @@ class LoginController extends CI_Controller
                 $this->session->set_userdata($data_session);
                 redirect('election');
             } else {
-                echo "Password salah !";
+                $this->session->set_flashdata('password', 'Dilogin');
+                redirect('login');
             }
         } else {
-            echo "Email salah !";
+            $this->session->set_flashdata('email', 'Dilogin');
+            redirect('login');
         }
     }
 
@@ -65,10 +67,12 @@ class LoginController extends CI_Controller
                 $this->session->set_userdata($data_session);
                 redirect('voting');
             } else {
-                echo "Password salah !";
+                $this->session->set_flashdata('password', 'Dilogin');
+                redirect('login_admin');
             }
         } else {
-            echo "Username salah !";
+            $this->session->set_flashdata('username', 'Dilogin');
+            redirect('login_admin');
         }
     }
 

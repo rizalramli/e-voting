@@ -19,7 +19,12 @@
                             <div class="card-header">
                                 <h4>E-Voting</h4>
                             </div>
-
+                            <?php if ($this->session->flashdata('email')) : ?>
+                                <div class="cek-email" data-flashdata="<?= $this->session->flashdata('email'); ?>"></div>
+                            <?php endif; ?>
+                            <?php if ($this->session->flashdata('password')) : ?>
+                                <div class="cek-password" data-flashdata="<?= $this->session->flashdata('password'); ?>"></div>
+                            <?php endif; ?>
                             <div class="card-body">
                                 <form action="<?php echo base_url('login/store_voter') ?>" method="post">
                                     <div class="form-group">
@@ -59,6 +64,23 @@
     <!-- panggil assets js -->
     <?php $this->load->view('layouts/js.php'); ?>
     <script>
+        var cek_email = $('.cek-email').data(cek_email);
+        if (cek_email) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Email anda salah !'
+            })
+        }
+        var cek_password = $('.cek-password').data(cek_password);
+        if (cek_password) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Password anda salah !'
+            })
+        }
+
         function showPassword() {
             var x = document.getElementById("password");
             if (x.type === "password") {

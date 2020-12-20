@@ -14,6 +14,8 @@
 <script src="<?php echo base_url(); ?>assets/stisla/js/scripts.js"></script>
 <script src="<?php echo base_url(); ?>assets/stisla/js/custom.js"></script>
 <script src="<?php echo base_url(); ?>assets/stisla/js/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/stisla/download_js/sweet-alert.min.js"></script>
+
 <script>
     $('#dataTables').DataTable({
         ordering: false
