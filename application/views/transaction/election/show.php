@@ -62,41 +62,27 @@
                                         <div class="row py-2 px-2">
                                             <div class="col-3 col-sm-3 col-lg-3 mb-1">
                                                 <div class="avatar-item mb-0">
-                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/stisla/icons/avatar-1.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/nasdem.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
                                                 </div>
                                             </div>
                                             <div class="col-3 col-sm-3 col-lg-3 mb-1">
                                                 <div class="avatar-item mb-0">
-                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/stisla/icons/avatar-1.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/pdip.jpeg') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
                                                 </div>
                                             </div>
                                             <div class="col-3 col-sm-3 col-lg-3 mb-1">
                                                 <div class="avatar-item mb-0">
-                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/stisla/icons/avatar-1.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/nasdem.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
                                                 </div>
                                             </div>
                                             <div class="col-3 col-sm-3 col-lg-3 mb-1">
                                                 <div class="avatar-item mb-0">
-                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/stisla/icons/avatar-1.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                                </div>
-                                            </div>
-                                            <div class="col-3 col-sm-3 col-lg-3 mb-1">
-                                                <div class="avatar-item mb-0">
-                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/stisla/icons/avatar-1.png') ?>" class="img-fluid" data-toggle="tooltip" title="Egi Ferdian">
-                                                </div>
-                                            </div>
-                                            <div class="col-3 col-sm-3 col-lg-3 mb-1">
-                                                <div class="avatar-item mb-0">
-                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/stisla/icons/avatar-1.png') ?>" class="img-fluid" data-toggle="tooltip" title="Jaka Ramadhan">
-                                                </div>
-                                            </div>
-                                            <div class="col-3 col-sm-3 col-lg-3 mb-1">
-                                                <div class="avatar-item mb-0">
-                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/stisla/icons/avatar-1.png') ?>" class="img-fluid" data-toggle="tooltip" title="Ryan">
+                                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/pdip.jpeg') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="<?php echo base_url('assets/photo/partai/5fddfe550b89c.png') ?>" class="card-img-top" alt="...">
+
+                                        <img src="<?php echo base_url(); ?>assets/photo/kandidat/<?php echo $item->photo ?>" class="card-img-top">
                                         <div class="card-body text-center">
                                             <h3 class="card-title"><?php echo $item->number ?></h3>
                                             <h6 class="card-title"><?php echo $item->name ?></h6>
