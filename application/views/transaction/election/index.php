@@ -80,11 +80,13 @@
                             <?php
                             $i = 0;
                             $election_validation = '';
+                            $done = false;
 
                             foreach ($election_item as $item2) :
 
                               if ($item->voting_id == $item2->voting_id) {
                                 $election_validation = '<span class="badge badge-success">Sudah Memilih</span>';
+                                $done = true;
                               } else {
                                 $election_validation = '<span class="badge badge-danger">Belum Memilih</span>';
                               }
@@ -100,9 +102,27 @@
                             ?>
 
                           </div>
-                          <a href="<?php echo base_url('election/' . $item->voting_id . '/show') ?>" class="ticket-item ticket-more">
-                            Lihat Kandidat <i class="fas fa-chevron-right"></i>
-                          </a>
+
+                          <?php
+                          if (!$done) {
+                          ?>
+                            <!-- jika belum memilih -->
+                            <a href="<?php echo base_url('election/' . $item->voting_id . '/show') ?>" class="ticket-item ticket-more">
+                              Lihat Kandidat <i class="fas fa-chevron-right"></i>
+                            </a>
+
+                          <?php
+                          } else {
+                          ?>
+                            <!-- jika sudah memilih -->
+                            <div class="ticket-item ticket-more">
+                              &nbsp;
+                            </div>
+
+                          <?php
+                          }
+                          ?>
+
                         </div>
                       </div>
                     </div>
