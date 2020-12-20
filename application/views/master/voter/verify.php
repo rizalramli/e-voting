@@ -17,14 +17,14 @@
                     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4>Verifikasi Email</h4>
+                                <h4>Aktivasi Akun</h4>
                             </div>
 
                             <div class="card-body">
                                 <form action="<?php echo base_url('verify/submit/store') ?>" method="post">
                                     <div class="form-group">
                                         <div class="d-block">
-                                            <label for="name">Nama</label>
+                                            <label for="name">Nama Mahasiswa</label>
                                         </div>
                                         <input type="hidden" name="email" value="<?php echo $email ?>">
                                         <input id="name" type="text" class="form-control form-control-sm" name="name" value="<?php echo set_value('name') ?>">
@@ -33,7 +33,7 @@
 
                                     <div class="form-group">
                                         <div class="d-block">
-                                            <label for="password">Password</label>
+                                            <label for="password">Password Baru</label>
                                         </div>
                                         <input id="password" type="password" class="form-control form-control-sm" name="password">
 
@@ -47,7 +47,7 @@
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block" tabindex="4">
-                                            Verify
+                                            Aktivasi
                                         </button>
                                     </div>
                                 </form>
