@@ -81,6 +81,7 @@ $route['verify/submit/store']  = 'master/VoterController/verifyStore';
 
 $route['election']             = 'transaction/ElectionController/index';
 $route['election/(:any)/show'] = 'transaction/ElectionController/show/$1';
+$route['election/store']       = 'transaction/ElectionController/storeAjax';
 
 $route['candidate']             = 'master/CandidateController/index';
 $route['candidate/(:any)/create'] = 'master/CandidateController/create/$1';
