@@ -57,7 +57,9 @@
                                 <tr>
                                     <td class="align-middle"><?php echo $item->number ?></td>
                                     <td class="align-middle"><?php echo $item->name ?></td>
-                                    <td class="align-middle"><?php echo $item->photo ?></td>
+                                    <td class="align-middle">
+                                        <img width="100px" height="100px" src="<?php echo base_url(); ?>assets/photo/kandidat/<?php echo $item->photo ?>" alt="">
+                                    </td>
                                     <td class="align-middle">
                                         <a href="<?php echo base_url('candidate/' . $item->candidate_id . '/edit') ?>" class="btn btn-sm btn-warning">Edit</a>
                                         <a href="<?php echo base_url('candidate/' . $item->candidate_id . '/delete') ?>" class="btn btn-sm btn-danger">Hapus</a>
