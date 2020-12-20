@@ -92,3 +92,5 @@ $route['candidate/(:any)/edit']   = 'master/CandidateController/edit/$1';
 $route['candidate/(:any)/show'] = 'master/CandidateController/show/$1';
 $route['candidate/edit/(:any)'] = 'master/CandidateController/editAjax/$1';
 $route['candidate/update']      = 'master/CandidateController/update';
+
+$route['recapitulation']             = 'dashboard/RecapitulationController/index';
