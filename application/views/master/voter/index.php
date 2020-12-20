@@ -17,7 +17,6 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">Status Verifikasi</th>
-                            <th scope="col">Status Pilihan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,14 +31,6 @@
                                         echo '<span class="badge badge-success">Sudah</span>';
                                     } ?>
                                 </td>
-                                <td>
-                                <?php if ($item->voter_status == 1) {
-                                        echo '<span class="badge badge-success">Sudah</span>';
-                                    } else {
-                                        echo '<span class="badge badge-danger">Belum</span>';
-                                    } ?>
-                                </td>
-                                
                             </tr>
                         <?php endforeach ?>
                     </tbody>

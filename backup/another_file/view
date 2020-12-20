@@ -1,0 +1,12 @@
+CREATE VIEW view_election AS
+SELECT 
+    e.election_id,
+    vtr.voter_id, vtr.name, vtr.email,
+    c.candidate_id,
+    vtg.voting_id
+FROM 
+    election e JOIN 
+    voter vtr USING(voter_id) JOIN
+    candidate c USING(candidate_id) JOIN
+    voting vtg USING(voting_id)
+ORDER BY e.election_id ASC;
