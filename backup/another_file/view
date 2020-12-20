@@ -10,3 +10,14 @@ FROM
     candidate c USING(candidate_id) JOIN
     voting vtg USING(voting_id)
 ORDER BY e.election_id ASC;
+
+CREATE VIEW view_member AS
+SELECT 
+    m.member_id,
+    p.party_id, p.name AS party_name, p.photo AS party_photo,
+    c.candidate_id, c.voting_id, c.name AS candidate_name, c.photo AS candidate_photo, c.number, c.is_active
+FROM 
+    member m JOIN 
+    party p USING(party_id) JOIN
+    candidate c USING(candidate_id)
+ORDER BY c.number ASC;

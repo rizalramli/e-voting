@@ -28,4 +28,11 @@ class M_crud extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    function get_data_group_by($table, $where, $group_by, $order_by)
+    {
+        $this->db->group_by($group_by);
+        $this->db->order_by($order_by, "ASC");
+        return $this->db->get_where($table, $where);
+    }
 }

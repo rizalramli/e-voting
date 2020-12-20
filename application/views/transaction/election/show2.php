@@ -60,106 +60,35 @@
                         </div>
                         <h3 class="text-center">Pemilihan DPM 2020</h3>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <div class="avatar-item mb-0">
-                                            <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/nasdem.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                        </div>
-                                        <h6 class="card-title mt-2">Partai A</h6>
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                1. Paslon No 1
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                2. Paslon No 2
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                3. Paslon No 3
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                        </ul>
 
+                            <?php foreach ($party_item as $item) : ?>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="avatar-item mb-0">
+                                                <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                                            </div>
+                                            <h6 class="card-title mt-2"><?php echo $item->party_name ?></h6>
+                                            <ul class="list-group">
+                                                <?php
+                                                foreach ($member_item as $item2) :
+                                                    if ($item->party_id == $item2->party_id) {
+                                                        # code...
+                                                ?>
+                                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                            <?php echo $item2->number ?>. <?php echo $item2->candidate_name ?>
+                                                            <button onclick="storeElection(<?php echo $item2->candidate_id ?>, '<?php echo $item2->candidate_name ?>')" class="btn btn-primary">Pilih</button>
+                                                        </li>
+                                                <?php
+                                                    }
+                                                endforeach
+                                                ?>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <div class="avatar-item mb-0">
-                                            <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/pdip.jpeg') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                        </div>
-                                        <h6 class="card-title mt-2">Partai B</h6>
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                1. Paslon No 1
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                2. Paslon No 2
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                3. Paslon No 3
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                        </ul>
+                            <?php endforeach ?>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <div class="avatar-item mb-0">
-                                            <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/nasdem.png') ?>" class="img-fluid" data-toggle="tooltip" title="Partai C">
-                                        </div>
-                                        <h6 class="card-title mt-2">Partai C</h6>
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                1. Paslon No 1
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                2. Paslon No 2
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                3. Paslon No 3
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <div class="avatar-item mb-0">
-                                            <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/pdip.jpeg') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                        </div>
-                                        <h6 class="card-title mt-2">Partai D</h6>
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                1. Paslon No 1
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                2. Paslon No 2
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                3. Paslon No 3
-                                                <button onclick="" class="btn btn-primary">Pilih</button>
-                                            </li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>
