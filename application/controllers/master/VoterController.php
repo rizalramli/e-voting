@@ -9,6 +9,7 @@ class VoterController extends CI_Controller
         //     redirect('login');
         // }
         $this->load->model('M_crud');
+        $this->load->library('encryption');
     }
 
     public function index()
@@ -41,17 +42,16 @@ class VoterController extends CI_Controller
         foreach ($voter as $item) {
             $this->email->from('e41170438@student.polije.ac.id', 'E-voting');
 
-            $this->email->to($item->email); // Ganti dengan email tujuan
-
-            // Lampiran email, isi dengan url/path file
-            // $this->email->attach('https://masrud.com/content/images/20181215150137-codeigniter-smtp-gmail.png');
-
+            $this->email->to($item->email);
             $this->email->subject('Verify Email');
+            $email_enkripsi = $this->encryption->encrypt($item->email);
+            $data = array(
+                'email' => $email_enkripsi
+            );
 
             // Isi email
-            $body = $this->load->view('layouts/template_email', '', TRUE);
+            $body = $this->load->view('layouts/template_email', $data, TRUE);
             $this->email->message($body);
-            // $this->email->message("test.<br><br> Klik <strong><a href='http://localhost/e-voting/login' target='_blank' rel='noopener'>klik</a></strong>");
 
             $this->email->send();
 
@@ -64,5 +64,62 @@ class VoterController extends CI_Controller
             $this->M_crud->update_data($where, $data, $table);
         }
         redirect('voter');
+    }
+
+    public function verify($id)
+    {
+        $email_decrypt = $this->encryption->decrypt($id);
+
+        $data['email'] = $id;
+        $this->load->view('master/voter/verify', $data);
+    }
+
+    public function verifyStore()
+    {
+        $name  = $this->input->post('name');
+        $email  = $this->input->post('email');
+        $password  = $this->input->post('password');
+
+        $this->form_validation->set_rules('name', 'Nama', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if ($this->form_validation->run() != false) {
+            $data = array(
+                'name' => $name,
+                'password' => password_hash($password, PASSWORD_BCRYPT),
+            );
+            $where = array(
+                'email' => $email
+            );
+
+            $this->M_crud->update_data($where, $data, 'voter');
+
+            // Login
+            $where    = array(
+                'email'  => $email,
+                'is_active' => 1,
+            );
+
+            $query = $this->M_crud->edit_data($where, 'voter');
+            if ($query->num_rows() > 0) {
+                $hash = $query->row('password');
+                if (password_verify($password, $hash)) {
+                    $data_session = array(
+                        'voter_id' => $query->row('voter_id'),
+                        'email' => $query->row('email'),
+                        'name' => $query->row('name'),
+                    );
+                    $this->session->set_userdata($data_session);
+                    redirect('election');
+                } else {
+                    echo "Password salah !";
+                }
+            } else {
+                echo "Email salah !";
+            }
+        } else {
+            $data['email'] = $email;
+            $this->load->view('master/voter/verify', $data);
+        }
     }
 }
