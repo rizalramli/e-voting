@@ -15,6 +15,11 @@ class ElectionController extends CI_Controller
     {
         $table = 'voting';
         $data['items'] = $this->db->order_by('name', 'ASC')->get($table)->result();
+
+        $voter_id = $this->session->userdata('voter_id');
+        $where = array('voter_id' => $voter_id);
+        $data['election_item'] = $this->M_crud->edit_data($where, 'view_election')->result();
+
         $this->load->view('transaction/election/index', $data);
     }
 

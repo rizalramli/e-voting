@@ -26,7 +26,7 @@ class LoginController extends CI_Controller
             $hash = $query->row('password');
             if (password_verify($password, $hash)) {
                 $data_session = array(
-                    'admin_id' => $query->row('admin_id'),
+                    'voter_id' => $query->row('voter_id'),
                     'email' => $query->row('email'),
                     'name' => $query->row('name'),
                 );

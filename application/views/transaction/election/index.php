@@ -56,6 +56,7 @@
         <section class="section">
           <div class="section-body">
             <div class="row">
+
               <?php foreach ($items as $item) : ?>
                 <div class="col-md-4">
                   <div class="card card-hero">
@@ -72,17 +73,43 @@
                             <h4>
                               <?php echo date('d F Y', strtotime($item->date))  ?>
                             </h4>
-                            <h4><?php echo date('H:i', strtotime($item->start)) . " - " . date('H:i', strtotime($item->end)) ?></h4>
+                            <h4>
+                              <?php echo date('H:i', strtotime($item->start)) . " - " . date('H:i', strtotime($item->end)) ?>
+                            </h4>
+
+                            <?php
+                            $i = 0;
+                            $election_validation = '';
+
+                            foreach ($election_item as $item2) :
+
+                              if ($item->voting_id == $item2->voting_id) {
+                                $election_validation = '<span class="badge badge-success">Sudah Memilih</span>';
+                              } else {
+                                $election_validation = '<span class="badge badge-danger">Belum Memilih</span>';
+                              }
+
+                              $i++;
+                            endforeach;
+
+                            if ($i == 0) {
+                              $election_validation = '<span class="badge badge-danger">Belum Memilih</span>';
+                            }
+
+                            echo $election_validation;
+                            ?>
+
                           </div>
+                          <a href="<?php echo base_url('election/' . $item->voting_id . '/show') ?>" class="ticket-item ticket-more">
+                            Lihat Kandidat <i class="fas fa-chevron-right"></i>
+                          </a>
                         </div>
-                        <a href="<?php echo base_url('election/' . $item->voting_id . '/show') ?>" class="ticket-item ticket-more">
-                          Lihat Kandidat <i class="fas fa-chevron-right"></i>
-                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               <?php endforeach ?>
+
             </div>
           </div>
         </section>
@@ -119,6 +146,7 @@
 
   <!-- panggil assets js -->
   <?php $this->load->view('layouts/js.php'); ?>
+
 </body>
 
 </html>
