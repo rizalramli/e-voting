@@ -76,13 +76,13 @@ class LoginController extends CI_Controller
         }
     }
 
-    public function logout_voter()
+    public function logoutVoter()
     {
         $this->session->sess_destroy();
         redirect('login');
     }
 
-    public function logout_admin()
+    public function logoutAdmin()
     {
         $this->session->sess_destroy();
         redirect('login_admin');
