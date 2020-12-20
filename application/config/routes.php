@@ -57,7 +57,8 @@ $route['login']             = 'LoginController/indexVoter';
 $route['login/store_voter'] = 'LoginController/storeVoter';
 $route['login_admin']       = 'LoginController/indexAdmin';
 $route['login/store_admin'] = 'LoginController/storeAdmin';
-$route['logout']            = 'LoginController/logout';
+$route['logout_voter']            = 'LoginController/logoutVoter';
+$route['logout_admin']            = 'LoginController/logoutAdmin';
 
 $route['voting']             = 'master/VotingController/index';
 $route['voting/create']      = 'master/VotingController/create';

@@ -76,13 +76,15 @@ class LoginController extends CI_Controller
         }
     }
 
-    public function logout()
+    public function logout_voter()
     {
         $this->session->sess_destroy();
-        if ($this->session->userdata('username')) {
-            redirect('login_admin');
-        } else if ($this->session->userdata('email')) {
-            redirect('login');
-        }
+        redirect('login');
+    }
+
+    public function logout_admin()
+    {
+        $this->session->sess_destroy();
+        redirect('login_admin');
     }
 }
