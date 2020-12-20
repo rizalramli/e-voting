@@ -27,21 +27,27 @@
                             <table width="100%" class="table table-sm table-striped dataTables">
                                 <thead>
                                     <tr>
+                                        <th scope="col">No</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Jumlah Suara</th>
                                         <th scope="col">Persentase</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($result_data_bem as $item_data_bem) :
+                                    <?php
+                                    $i = 1;
+                                    foreach ($result_data_bem as $item_data_bem) :
                                         $percentage_bem = ($item_data_bem->election_total * 100) / $election_grand_total_bem;
                                     ?>
                                         <tr>
+                                            <td><?php echo $i ?></td>
                                             <td><?php echo $item_data_bem->candidate_name ?></td>
                                             <td><?php echo $item_data_bem->election_total ?></td>
                                             <td><?php echo $percentage_bem . "%" ?></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php
+                                        $i++;
+                                    endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -59,21 +65,27 @@
                             <table width="100%" class="table table-sm table-striped dataTables">
                                 <thead>
                                     <tr>
+                                        <th scope="col">No</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Jumlah Suara</th>
                                         <th scope="col">Persentase</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($result_data_blm as $item_data_blm) :
+                                    <?php
+                                    $i = 1;
+                                    foreach ($result_data_blm as $item_data_blm) :
                                         $percentage_blm = ($item_data_blm->election_total * 100) / $election_grand_total_blm;
                                     ?>
                                         <tr>
+                                            <td><?php echo $i ?></td>
                                             <td><?php echo $item_data_blm->candidate_name ?></td>
                                             <td><?php echo $item_data_blm->election_total ?></td>
                                             <td><?php echo $percentage_blm . "%" ?></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php
+                                        $i++;
+                                    endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -111,21 +123,27 @@
                             <table width="100%" class="table table-sm table-striped dataTables">
                                 <thead>
                                     <tr>
+                                        <th scope="col">No</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Jumlah Suara</th>
                                         <th scope="col">Persentase</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($result_data_dlm as $item_data_dlm) :
+                                    <?php
+                                    $i = 1;
+                                    foreach ($result_data_dlm as $item_data_dlm) :
                                         $percentage_dlm = ($item_data_dlm->election_total * 100) / $election_grand_total_dlm;
                                     ?>
                                         <tr>
+                                            <td><?php echo $i ?></td>
                                             <td><?php echo $item_data_dlm->candidate_name ?></td>
                                             <td><?php echo $item_data_dlm->election_total ?></td>
                                             <td><?php echo $percentage_dlm . "%" ?></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php
+                                        $i++;
+                                    endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
