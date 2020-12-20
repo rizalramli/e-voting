@@ -1,4 +1,5 @@
 <?php
+
 class MY_Encrypt extends CI_Encrypt
 {
     /**
@@ -10,6 +11,11 @@ class MY_Encrypt extends CI_Encrypt
      *                returned string should be url-safe.
      * @return string
      */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     function encode($string, $key = "", $url_safe = TRUE)
     {
         $ret = parent::encode($string, $key);

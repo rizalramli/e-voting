@@ -44,7 +44,9 @@ class VoterController extends CI_Controller
 
             $this->email->to($item->email);
             $this->email->subject('Verify Email');
-            $email_enkripsi = $this->encryption->encrypt($item->email);
+
+            $email_enkripsi = $this->encrypt->encode($item->email);
+
             $data = array(
                 'email' => $email_enkripsi
             );
@@ -68,9 +70,9 @@ class VoterController extends CI_Controller
 
     public function verify($id)
     {
-        $email_decrypt = $this->encryption->decrypt($id);
+        $email_decrypt = $this->encrypt->decode($id);
 
-        $data['email'] = $id;
+        $data['email'] = $email_decrypt;
         $this->load->view('master/voter/verify', $data);
     }
 
@@ -121,14 +123,5 @@ class VoterController extends CI_Controller
             $data['email'] = $email;
             $this->load->view('master/voter/verify', $data);
         }
-    }
-
-    public function test()
-    {
-        $key = 'Welcome';
-        $this->load->library('encrypt');
-        $key1 = $this->encrypt->encode($key);
-
-        echo $key1;
     }
 }

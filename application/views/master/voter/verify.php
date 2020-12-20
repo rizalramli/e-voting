@@ -26,7 +26,7 @@
                                         <div class="d-block">
                                             <label for="name">Nama</label>
                                         </div>
-                                        <input type="text" name="email" value="<?php echo $email ?>">
+                                        <input type="hidden" name="email" value="<?php echo $email ?>">
                                         <input id="name" type="text" class="form-control form-control-sm" name="name" value="<?php echo set_value('name') ?>">
                                         <span class="text-danger"><?php echo form_error('name'); ?></span>
                                     </div>
