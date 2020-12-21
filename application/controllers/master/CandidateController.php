@@ -50,6 +50,12 @@ class CandidateController extends CI_Controller
     {
         $where = array('candidate_id' => $id);
         $data['item'] = $this->M_crud->edit_data($where, 'candidate')->row();
+
+        $where = array(
+            'is_active' => 1,
+        );
+        $data['party_item'] = $this->M_crud->edit_data($where, 'party')->result();
+
         $this->template->load('layouts/app', 'master/candidate/edit', $data);
     }
 
