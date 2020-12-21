@@ -1,6 +1,6 @@
 CREATE VIEW view_election AS
 SELECT 
-    e.election_id,
+    e.election_id, e.attachment, e.create_at, e.election_status,
     vtr.voter_id, vtr.name, vtr.email,
     c.candidate_id,
     vtg.voting_id

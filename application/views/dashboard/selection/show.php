@@ -29,7 +29,7 @@
                                 <tr>
                                     <td class="align-middle"><?php echo $i ?></td>
                                     <td class="align-middle"><?php echo $item->name ?></td>
-                                    <td class="align-middle">waktu</td>
+                                    <td class="align-middle"><?php echo $item->create_at ?></td>
                                     <?php if ($this->session->userdata("role") == "KPU") { ?>
                                         <td class="align-middle">
                                             <a href="" class="btn btn-warning">View</a>
