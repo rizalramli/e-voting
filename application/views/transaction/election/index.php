@@ -15,7 +15,9 @@
   <div class="section-body">
     <div class="row">
 
-      <?php foreach ($items as $item) : ?>
+      <?php
+      $j = 0;
+      foreach ($items as $item) : ?>
         <div class="col-md-4">
           <div class="card card-hero">
             <div class="card-header">
@@ -84,7 +86,16 @@
             </div>
           </div>
         </div>
-      <?php endforeach ?>
+      <?php $j++;
+      endforeach;
+      if ($j == 0) {
+        echo '<div class="col-md-12">
+        <div class="text-center">
+          <h3>Pemilihan Belum Dimulai !</h3>
+        </div>
+      </div>';
+      }
+      ?>
 
     </div>
   </div>

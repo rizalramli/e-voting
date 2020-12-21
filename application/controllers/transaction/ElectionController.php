@@ -8,13 +8,15 @@ class ElectionController extends CI_Controller
         // if (!$this->session->userdata('id_user')) {
         //     redirect('login');
         // }
+        date_default_timezone_set('Asia/Jakarta');
         $this->load->model('M_crud');
     }
 
     public function index()
     {
-        $table = 'voting';
-        $data['items'] = $this->db->order_by('name', 'ASC')->get($table)->result();
+        // $table = 'voting';
+        $date = date('Y-m-d H:i:s');
+        $data['items'] = $this->M_crud->get_data_voting($date)->result();
 
         $voter_id = $this->session->userdata('voter_id');
         $where = array('voter_id' => $voter_id);

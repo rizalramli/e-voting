@@ -41,4 +41,12 @@ class M_crud extends CI_Model
         $this->db->order_by($order_by, "DESC");
         return $this->db->get_where($table, $where);
     }
+
+    function get_data_voting($date)
+    {
+        $this->db->where('is_active =', 1);
+        $this->db->where('start <=', $date);
+        $this->db->where('end >=', $date);
+        return $this->db->get('voting');
+    }
 }
