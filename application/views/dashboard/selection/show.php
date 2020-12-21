@@ -7,6 +7,7 @@
         <div class="card">
             <div class="card-header">
                 <a class="btn btn-danger" href="<?php echo base_url('selection') ?>">Kembali</a>
+                <h4 class="ml-4">Total Pemilih : <?php echo $election_num_rows ?></h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

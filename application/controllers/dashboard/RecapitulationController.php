@@ -79,6 +79,7 @@ class RecapitulationController extends CI_Controller
         );
 
         $data['items'] = $this->M_crud->edit_data($where, 'view_election')->result();
+        $data['election_num_rows'] = $this->M_crud->edit_data($where, 'view_election')->num_rows();
         $this->template->load('layouts/app', 'dashboard/selection/show', $data);
     }
 }
