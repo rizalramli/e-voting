@@ -14,8 +14,10 @@ class VoterController extends CI_Controller
 
     public function index()
     {
-        $table = 'voter';
-        $data['items'] = $this->db->get($table)->result();
+        $where = array(
+            'is_active' => 1,
+        );
+        $data['items'] = $this->M_crud->edit_data($where, 'voter')->result();
         $this->template->load('layouts/app', 'master/voter/index', $data);
     }
 

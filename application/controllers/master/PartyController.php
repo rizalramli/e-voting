@@ -13,8 +13,10 @@ class PartyController extends CI_Controller
 
     public function index()
     {
-        $table = 'party';
-        $data['items'] = $this->db->order_by('name', 'ASC')->get($table)->result();
+        $where = array(
+            'is_active' => 1,
+        );
+        $data['items'] = $this->M_crud->edit_data($where, 'party')->result();
         $this->template->load('layouts/app', 'master/party/index', $data);
     }
 
@@ -92,9 +94,14 @@ class PartyController extends CI_Controller
 
     public function delete($id)
     {
-        $where = array('party_id' => $id);
-        $this->_deleteImage($id);
-        $this->M_crud->hapus_data($where, 'party');
+        $data = array(
+            'is_active' => 0,
+        );
+        $where = array(
+            'party_id' => $id
+        );
+
+        $this->M_crud->update_data($where, $data, 'party');
         redirect('party');
     }
 
