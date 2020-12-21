@@ -13,32 +13,34 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total ?></h6>
-                            <table width="100%" class="table table-sm table-striped dataTables">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Jumlah Suara</th>
-                                        <th scope="col">Persentase</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $i = 1;
-                                    foreach ($result_data as $item_data) :
-                                        $percentage = ($item_data->election_total * 100) / $election_grand_total;
-                                    ?>
+                            <div class="table-responsive">
+                                <table width="100%" class="table table-sm table-striped dataTables">
+                                    <thead>
                                         <tr>
-                                            <td><?php echo $i ?></td>
-                                            <td><?php echo $item_data->candidate_name ?></td>
-                                            <td><?php echo $item_data->election_total ?></td>
-                                            <td><?php echo $percentage . "%" ?></td>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Jumlah Suara</th>
+                                            <th scope="col">Persentase</th>
                                         </tr>
-                                    <?php
-                                        $i++;
-                                    endforeach; ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($result_data as $item_data) :
+                                            $percentage = ($item_data->election_total * 100) / $election_grand_total;
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $i ?></td>
+                                                <td><?php echo $item_data->candidate_name ?></td>
+                                                <td><?php echo $item_data->election_total ?></td>
+                                                <td><?php echo $percentage . "%" ?></td>
+                                            </tr>
+                                        <?php
+                                            $i++;
+                                        endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -11,38 +11,40 @@
                 </form>
             </div>
             <div class="card-body">
-                <table width="100%" class="table table-sm table-striped" id="dataTables">
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Status Verifikasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($items as $item) :
-                        ?>
+                <div class="table-responsive">
+                    <table width="100%" class="table table-sm table-striped" id="dataTables">
+                        <thead>
                             <tr>
-                                <td class="align-middle"><?php echo $i ?></td>
-                                <td class="align-middle"><?php echo $item->name ?></td>
-                                <td class="align-middle"><?php echo $item->email ?></td>
-                                <td class="align-middle">
-                                    <?php if ($item->password == null) {
-                                        echo '<span class="badge badge-danger">Belum</span>';
-                                    } else {
-                                        echo '<span class="badge badge-success">Sudah</span>';
-                                    } ?>
-                                </td>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Status Verifikasi</th>
                             </tr>
-                        <?php
-                            $i++;
-                        endforeach
-                        ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($items as $item) :
+                            ?>
+                                <tr>
+                                    <td class="align-middle"><?php echo $i ?></td>
+                                    <td class="align-middle"><?php echo $item->name ?></td>
+                                    <td class="align-middle"><?php echo $item->email ?></td>
+                                    <td class="align-middle">
+                                        <?php if ($item->password == null) {
+                                            echo '<span class="badge badge-danger">Belum</span>';
+                                        } else {
+                                            echo '<span class="badge badge-success">Sudah</span>';
+                                        } ?>
+                                    </td>
+                                </tr>
+                            <?php
+                                $i++;
+                            endforeach
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

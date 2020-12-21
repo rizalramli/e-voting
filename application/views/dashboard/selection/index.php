@@ -19,7 +19,6 @@
                         <div class="card-body p-0">
                             <div class="tickets-list">
                                 <div class="ticket-item">
-                                    <!-- jika belum memilih -->
                                     <a href="<?php echo base_url('selection/' . $item->voting_id . '/show_selection') ?>" class="ticket-item ticket-more">
                                         Lihat Suara <i class="fas fa-chevron-right"></i>
                                     </a>

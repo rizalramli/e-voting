@@ -43,56 +43,33 @@
             </div>
             <div class="collapse hidden" id="mycard-collapse">
                 <div class="card-body">
-                    <table width="100%" class="table table-sm table-striped dataTables">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nomor Urut</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Foto</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($candidate_item as $item) : ?>
+                    <div class="table-responsive">
+                        <table width="100%" class="table table-sm table-striped dataTables">
+                            <thead>
                                 <tr>
-                                    <td class="align-middle"><?php echo $item->number ?></td>
-                                    <td class="align-middle"><?php echo $item->name ?></td>
-                                    <td class="align-middle">
-                                        <img width="100px" height="100px" src="<?php echo base_url(); ?>assets/photo/kandidat/<?php echo $item->photo ?>" alt="">
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="<?php echo base_url('candidate/' . $item->candidate_id . '/edit') ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="<?php echo base_url('candidate/' . $item->candidate_id . '/delete') ?>" class="btn btn-sm btn-danger">Hapus</a>
-                                    </td>
+                                    <th scope="col">Nomor Urut</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Foto</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h4>Pemilih (0)</h4>
-                <div class="card-header-action">
-                    <a data-collapse="#mycard-collapse2" class="btn btn-icon btn-info" href="#">Show</a>
-                </div>
-            </div>
-            <div class="collapse hidden" id="mycard-collapse2">
-                <div class="card-body">
-                    <table width="100%" class="table table-sm table-striped dataTables">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nomor</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($candidate_item as $item) : ?>
+                                    <tr>
+                                        <td class="align-middle"><?php echo $item->number ?></td>
+                                        <td class="align-middle"><?php echo $item->name ?></td>
+                                        <td class="align-middle">
+                                            <img width="100px" height="100px" src="<?php echo base_url(); ?>assets/photo/kandidat/<?php echo $item->photo ?>" alt="">
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="<?php echo base_url('candidate/' . $item->candidate_id . '/edit') ?>" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="<?php echo base_url('candidate/' . $item->candidate_id . '/delete') ?>" class="btn btn-sm btn-danger">Hapus</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
