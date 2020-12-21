@@ -35,4 +35,10 @@ class M_crud extends CI_Model
         $this->db->order_by($order_by, "ASC");
         return $this->db->get_where($table, $where);
     }
+
+    function get_data_order_by_desc($table, $where, $order_by)
+    {
+        $this->db->order_by($order_by, "DESC");
+        return $this->db->get_where($table, $where);
+    }
 }

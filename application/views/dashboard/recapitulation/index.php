@@ -95,19 +95,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="text-center">Hasil Partai</h5>
-                            <div class="card">
-                                <div class="row no-gutters">
-                                    <div class="col-sm-4" style="background: #868e96;">
-                                        <img width="70px" height="70x" src="<?php echo base_url('assets/photo/partai/pdip.jpeg') ?>" class="card-img-top h-100" alt="...">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Alice Liddel</h5>
-                                            <p class="card-text">70 Suara / 70 %</p>
+                            <?php foreach ($result_data_party_blm as $item_data_party_blm) : ?>
+                                <div class="card">
+                                    <div class="row no-gutters">
+                                        <div class="col-sm-4" style="background: #868e96;">
+                                            <img width="70px" height="70x" src="<?php echo base_url('assets/photo/partai/' . $item_data_party_blm->party_photo) ?>" class="card-img-top h-100" alt="...">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?php echo $item_data_party_blm->party_name ?></h5>
+                                                <p class="card-text"><?php echo $item_data_party_blm->election_total ?> Suara / 70 %</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -153,19 +155,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="text-center">Hasil Partai</h5>
-                            <div class="card">
-                                <div class="row no-gutters">
-                                    <div class="col-sm-4" style="background: #868e96;">
-                                        <img width="70px" height="70x" src="<?php echo base_url('assets/photo/partai/nasdem.png') ?>" class="card-img-top h-100" alt="...">
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Alice Liddel</h5>
-                                            <p class="card-text">70 Suara / 70 %</p>
+                            <?php foreach ($result_data_party_dlm as $item_data_party_dlm) : ?>
+                                <div class="card">
+                                    <div class="row no-gutters">
+                                        <div class="col-sm-4" style="background: #868e96;">
+                                            <img width="70px" height="70x" src="<?php echo base_url('assets/photo/partai/' . $item_data_party_dlm->party_photo) ?>" class="card-img-top h-100" alt="...">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?php echo $item_data_party_dlm->party_name ?></h5>
+                                                <p class="card-text"><?php echo $item_data_party_dlm->election_total ?> Suara / 70 %</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
