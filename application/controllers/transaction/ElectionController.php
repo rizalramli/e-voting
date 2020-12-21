@@ -19,8 +19,7 @@ class ElectionController extends CI_Controller
         $voter_id = $this->session->userdata('voter_id');
         $where = array('voter_id' => $voter_id);
         $data['election_item'] = $this->M_crud->edit_data($where, 'view_election')->result();
-
-        $this->load->view('transaction/election/index', $data);
+        $this->template->load('layouts/app_voter', 'transaction/election/index', $data);
     }
 
     public function show($id)
@@ -28,7 +27,7 @@ class ElectionController extends CI_Controller
         if ($id == 1) {
             $where = array('voting_id' => $id);
             $data['items'] = $this->M_crud->edit_data($where, 'candidate')->result();
-            $this->load->view('transaction/election/show', $data);
+            $this->template->load('layouts/app_voter', 'transaction/election/show', $data);
         } else {
             $where = array(
                 'is_active' => 1,
@@ -36,7 +35,7 @@ class ElectionController extends CI_Controller
             );
             $data['party_item'] = $this->M_crud->get_data_group_by('view_member', $where, 'party_id', 'party_name')->result();
             $data['member_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
-            $this->load->view('transaction/election/show2', $data);
+            $this->template->load('layouts/app_voter', 'transaction/election/show2', $data);
         }
     }
 
