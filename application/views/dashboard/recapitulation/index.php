@@ -10,7 +10,7 @@
                     <div class="card card-hero">
                         <div class="card-header">
                             <div class="card-icon">
-                                <i class="fas fa-box"></i>
+                                <i class="fas fa-poll"></i>
                             </div>
                             <h5>
                                 <?php echo $item->name ?>
