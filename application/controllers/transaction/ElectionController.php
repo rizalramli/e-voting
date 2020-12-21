@@ -27,8 +27,13 @@ class ElectionController extends CI_Controller
     public function show($id)
     {
         if ($id == 1) {
-            $where = array('voting_id' => $id);
-            $data['items'] = $this->M_crud->edit_data($where, 'candidate')->result();
+            $where = array(
+                'is_active' => 1,
+                'voting_id' => $id
+            );
+            $data['party_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
+            $data['items'] = $this->M_crud->get_data_group_by('view_member', $where, 'candidate_id', 'number')->result();
+
             $this->template->load('layouts/app_voter', 'transaction/election/show', $data);
         } else {
             $where = array(
@@ -37,6 +42,7 @@ class ElectionController extends CI_Controller
             );
             $data['party_item'] = $this->M_crud->get_data_group_by('view_member', $where, 'party_id', 'party_name')->result();
             $data['member_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
+
             $this->template->load('layouts/app_voter', 'transaction/election/show2', $data);
         }
     }

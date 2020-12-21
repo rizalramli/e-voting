@@ -23,34 +23,26 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="row py-2 px-2">
-                            <div class="col-3 col-sm-3 col-lg-3 mb-1">
-                                <div class="avatar-item mb-0">
-                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/nasdem.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3 col-lg-3 mb-1">
-                                <div class="avatar-item mb-0">
-                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/pdip.jpeg') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3 col-lg-3 mb-1">
-                                <div class="avatar-item mb-0">
-                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/nasdem.png') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-3 col-lg-3 mb-1">
-                                <div class="avatar-item mb-0">
-                                    <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/pdip.jpeg') ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
-                                </div>
-                            </div>
+                            <?php
+                            foreach ($party_item as $item2) :
+                                if ($item->candidate_id == $item2->candidate_id) {
+                            ?>
+                                    <div class="col-3 col-sm-3 col-lg-3 mb-1">
+                                        <div class="avatar-item mb-0">
+                                            <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item2->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                            endforeach
+                            ?>
                         </div>
-
-                        <img src="<?php echo base_url(); ?>assets/photo/kandidat/<?php echo $item->photo ?>" class="card-img-top">
+                        <img src="<?php echo base_url(); ?>assets/photo/kandidat/<?php echo $item->candidate_photo ?>" class="card-img-top">
                         <div class="card-body text-center">
                             <h3 class="card-title"><?php echo $item->number ?></h3>
-                            <h6 class="card-title"><?php echo $item->name ?></h6>
+                            <h6 class="card-title"><?php echo $item->candidate_name ?></h6>
 
-                            <button onclick="storeElection(<?php echo $item->candidate_id ?>, '<?php echo $item->name ?>')" class="btn btn-primary stretched-link mt-3">Pilih</button>
+                            <button onclick="storeElection(<?php echo $item->candidate_id ?>, '<?php echo $item->candidate_name ?>')" class="btn btn-primary stretched-link mt-3">Pilih</button>
                         </div>
                     </div>
                 </div>
