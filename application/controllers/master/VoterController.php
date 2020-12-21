@@ -8,6 +8,9 @@ class VoterController extends CI_Controller
         if (!$this->session->userdata('username')) {
             redirect('login_admin');
         }
+        if ($this->session->userdata('role') != "Admin") {
+            redirect('login_admin');
+        }
         $this->load->model('M_crud');
     }
 

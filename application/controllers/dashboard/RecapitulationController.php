@@ -13,6 +13,9 @@ class RecapitulationController extends CI_Controller
 
     public function index()
     {
+        if ($this->session->userdata('role') != "Admin") {
+            redirect('login_admin');
+        }
         // Hasil rekapitulasi BEM
         $where_election_bem   = array(
             'voting_id'  => 1,
@@ -47,5 +50,9 @@ class RecapitulationController extends CI_Controller
 
         // end
         $this->template->load('layouts/app', 'dashboard/recapitulation/index', $data);
+    }
+    public function indexSelection()
+    {
+        $this->template->load('layouts/app', 'dashboard/selection/index');
     }
 }

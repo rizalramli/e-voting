@@ -63,9 +63,14 @@ class LoginController extends CI_Controller
                 $data_session = array(
                     'admin_id' => $query->row('admin_id'),
                     'username' => $query->row('username'),
+                    'role' => $query->row('role')
                 );
                 $this->session->set_userdata($data_session);
-                redirect('voting');
+                if ($query->row('role') == "admin") {
+                    redirect('voting');
+                } else {
+                    redirect('selection');
+                }
             } else {
                 $this->session->set_flashdata('password', 'Dilogin');
                 redirect('login_admin');
