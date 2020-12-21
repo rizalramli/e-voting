@@ -5,9 +5,9 @@ class ElectionController extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        // if (!$this->session->userdata('id_user')) {
-        //     redirect('login');
-        // }
+        if (!$this->session->userdata('email')) {
+            redirect('login');
+        }
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('M_crud');
     }

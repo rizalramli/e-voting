@@ -27,9 +27,6 @@
                             <div class="d-sm-none d-lg-inline-block">Hi, <?php echo $this->session->userdata('username'); ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="features-settings.html" class="dropdown-item has-icon">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
                             <a class="dropdown-item has-icon text-danger" href="" data-toggle="modal" data-target="#exampleModal">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
