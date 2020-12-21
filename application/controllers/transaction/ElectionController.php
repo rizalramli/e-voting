@@ -14,7 +14,6 @@ class ElectionController extends CI_Controller
 
     public function index()
     {
-        // $table = 'voting';
         $date = date('Y-m-d H:i:s');
         $data['items'] = $this->M_crud->get_data_voting($date)->result();
 
@@ -31,6 +30,8 @@ class ElectionController extends CI_Controller
                 'is_active' => 1,
                 'voting_id' => $id
             );
+            $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
+            $data['title'] = $voting_data->name;
             $data['party_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
             $data['items'] = $this->M_crud->get_data_group_by('view_member', $where, 'candidate_id', 'number')->result();
 
@@ -40,6 +41,8 @@ class ElectionController extends CI_Controller
                 'is_active' => 1,
                 'voting_id' => $id
             );
+            $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
+            $data['title'] = $voting_data->name;
             $data['party_item'] = $this->M_crud->get_data_group_by('view_member', $where, 'party_id', 'party_name')->result();
             $data['member_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
 

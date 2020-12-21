@@ -17,19 +17,19 @@
         <div class="float-left">
             <button class="btn btn-danger" onclick="goBack()">Kembali</button>
         </div>
-        <h3 class="text-center">Pemilihan BEM 2020</h3>
+        <h3 class="text-center mb-4"><?php echo $title ?></h3>
         <div class="row justify-content-center">
             <?php foreach ($items as $item) : ?>
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="row py-2 px-2">
+                        <div class="row mt-4 justify-content-center py-2 px-2">
                             <?php
                             foreach ($party_item as $item2) :
                                 if ($item->candidate_id == $item2->candidate_id) {
                             ?>
                                     <div class="col-3 col-sm-3 col-lg-3 mb-1">
                                         <div class="avatar-item mb-0">
-                                            <img width="50px" height="50px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item2->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                                            <img width="70px" height="70px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item2->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
                                         </div>
                                     </div>
                             <?php

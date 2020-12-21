@@ -17,7 +17,7 @@
         <div class="float-left">
             <button class="btn btn-danger" onclick="goBack()">Kembali</button>
         </div>
-        <h3 class="text-center">Pemilihan BLM / DLM 2020</h3>
+        <h3 class="text-center mb-4"><?php echo $title ?></h3>
         <div class="row">
 
             <?php foreach ($party_item as $item) : ?>
