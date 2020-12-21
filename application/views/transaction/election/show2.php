@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <div class="avatar-item mb-0">
-                                <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="Alfa Zulkarnain">
+                                <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="<?php echo $item->party_name ?>">
                             </div>
                             <h6 class="card-title mt-2"><?php echo $item->party_name ?></h6>
                             <ul class="list-group">

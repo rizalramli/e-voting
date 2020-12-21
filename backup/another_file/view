@@ -31,7 +31,7 @@ FROM
     election e JOIN 
     candidate c USING(candidate_id) JOIN
     voting v USING(voting_id)
-GROUP BY c.candidate_id;
+GROUP BY c.candidate_id, v.voting_id;
 
 CREATE VIEW view_recapitulation_party AS
 SELECT 
@@ -44,4 +44,4 @@ FROM
     candidate c USING(candidate_id) JOIN
     member m USING(candidate_id) JOIN
     party p USING(party_id)
-GROUP BY p.party_id;
+GROUP BY p.party_id, c.voting_id;
