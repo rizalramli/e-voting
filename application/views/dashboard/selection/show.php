@@ -16,7 +16,9 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Waktu</th>
-                                <th scope="col">Action</th>
+                                <?php if ($this->session->userdata("role") == "KPU") { ?>
+                                    <th scope="col">Action</th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,9 +30,11 @@
                                     <td class="align-middle"><?php echo $i ?></td>
                                     <td class="align-middle"><?php echo $item->name ?></td>
                                     <td class="align-middle">waktu</td>
-                                    <td class="align-middle">
-                                        <a href="" class="btn btn-warning">View</a>
-                                    </td>
+                                    <?php if ($this->session->userdata("role") == "KPU") { ?>
+                                        <td class="align-middle">
+                                            <a href="" class="btn btn-warning">View</a>
+                                        </td>
+                                    <?php } ?>
                                 </tr>
                             <?php
                                 $i++;
