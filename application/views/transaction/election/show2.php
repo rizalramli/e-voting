@@ -17,7 +17,7 @@
         <div class="float-left">
             <button class="btn btn-danger" onclick="goBack()">Kembali</button>
         </div>
-        <h3 class="text-center">Pemilihan DPM 2020</h3>
+        <h3 class="text-center">Pemilihan BLM / DLM 2020</h3>
         <div class="row">
 
             <?php foreach ($party_item as $item) : ?>
@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <div class="avatar-item mb-0">
-                                <img width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="<?php echo $item->party_name ?>">
+                                <img onclick="storeElectionParty(<?php echo $item->party_id ?>, '<?php echo $item->party_name ?>', '<?php echo $item->voting_id ?>')" width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="<?php echo $item->party_name ?>">
                             </div>
                             <h6 class="card-title mt-2"><?php echo $item->party_name ?></h6>
                             <ul class="list-group">
@@ -61,6 +61,34 @@
                 type: 'post',
                 data: {
                     candidate_id: candidate_id
+                },
+                dataType: "JSON",
+                success: function(data) {
+
+                    if (data.status) {
+                        alert('Berhasil Memilih Kandidat');
+                        window.history.back();
+                    } else {
+                        alert('Gagal Melakukan Pemilihan');
+                    }
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Error adding / update data');
+                }
+            });
+        }
+    }
+
+    function storeElectionParty(party_id, name, voting_id) {
+        var result = confirm("Anda Ingin Memilih Partai " + name + " ?");
+        if (result) {
+            $.ajax({
+                url: "<?php echo base_url() . 'transaction/ElectionController/storeOnPartyAjax'; ?>",
+                type: 'post',
+                data: {
+                    party_id: party_id,
+                    voting_id: voting_id
                 },
                 dataType: "JSON",
                 success: function(data) {
