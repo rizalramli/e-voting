@@ -93,6 +93,7 @@ $route['candidate/(:any)/show'] = 'master/CandidateController/show/$1';
 $route['candidate/edit/(:any)'] = 'master/CandidateController/editAjax/$1';
 $route['candidate/update']      = 'master/CandidateController/update';
 
-$route['recapitulation']             = 'dashboard/RecapitulationController/index';
-$route['selection']             = 'dashboard/RecapitulationController/indexSelection';
-$route['selection/(:any)/show_selection']             = 'dashboard/RecapitulationController/showSelection/$1';
+$route['recapitulation'] = 'dashboard/RecapitulationController/indexRecapitulation';
+$route['recapitulation/(:any)/show_recapitulation'] = 'dashboard/RecapitulationController/showRecapitulation/$1';
+$route['selection'] = 'dashboard/RecapitulationController/indexSelection';
+$route['selection/(:any)/show_selection'] = 'dashboard/RecapitulationController/showSelection/$1';
