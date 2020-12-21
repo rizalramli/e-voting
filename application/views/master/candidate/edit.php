@@ -49,12 +49,18 @@
                     <div class="row">
                         <?php
                         foreach ($party_item as $item) :
+                            $checked = "";
+                            foreach ($member_item as $item2) :
+                                if ($item->party_id == $item2->party_id) {
+                                    $checked = "checked='checked'";
+                                }
+                            endforeach
                         ?>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox mt-2">
-                                        <input type="checkbox" name="party[]" class="custom-control-input" id="party<?php echo $item->party_id ?>">
-                                        <label class="custom-control-label" for="party<?php echo $item->party_id ?>"><?php echo $item->name ?></label>
+                                        <input <?php echo $checked ?> type="checkbox" name="party_id[]" value="<?php echo $item->party_id ?>" class="custom-control-input cb_party" id="party_id<?php echo $item->party_id ?>">
+                                        <label class="custom-control-label" for="party_id<?php echo $item->party_id ?>"><?php echo $item->name ?></label>
                                     </div>
                                 </div>
                             </div>
