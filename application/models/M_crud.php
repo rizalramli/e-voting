@@ -50,12 +50,12 @@ class M_crud extends CI_Model
         return $this->db->get('voting');
     }
 
-    // public function getFirstCandidateByParty($party_id, $voting_id)
-    // {
-    //     $this->db->where('party_id =', $party_id);
-    //     $this->db->where('voting_id =', $voting_id);
-    //     $this->db->order_by('number', 'ASC');
-    //     $this->db->limit(1);
-    //     return $this->db->get('view_member');
-    // }
+    public function getFirstCandidateByParty($party_id, $voting_id)
+    {
+        $this->db->where('party_id =', $party_id);
+        $this->db->where('voting_id =', $voting_id);
+        $this->db->order_by('number', 'ASC');
+        $this->db->limit(1);
+        return $this->db->get('view_member');
+    }
 }

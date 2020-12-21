@@ -66,7 +66,7 @@
                 success: function(data) {
 
                     if (data.status) {
-                        alert('Berhasil Memilih Kandidat');
+                        alert('Berhasil Memilih Kandidat ' + name);
                         window.history.back();
                     } else {
                         alert('Gagal Melakukan Pemilihan');
@@ -94,7 +94,7 @@
                 success: function(data) {
 
                     if (data.status) {
-                        alert('Berhasil Memilih Kandidat');
+                        alert('Berhasil Memilih Kandidat ' + data.candidate_name);
                         window.history.back();
                     } else {
                         alert('Gagal Melakukan Pemilihan');

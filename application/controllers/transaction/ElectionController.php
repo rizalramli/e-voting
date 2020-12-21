@@ -63,22 +63,27 @@ class ElectionController extends CI_Controller
 
     public function storeOnPartyAjax()
     {
-        // $party_id = $this->input->post('party_id');
-        // $voting_id = $this->session->userdata('voting_id');
-        // $voter_id = $this->session->userdata('voter_id');
+        $party_id = $this->input->post('party_id');
+        $voting_id = $this->input->post('voting_id');
+        $voter_id = $this->session->userdata('voter_id');
 
-        // $candidate_id = "";
-        // $get = $this->M_crud->getFirstCandidateByParty($party_id, $voting_id);
-        // foreach ($get->result_array() as $row) {
-        //     $candidate_id = $row["candidate_id"];
-        // }
+        $candidate_id = "";
+        $candidate_name = "";
+        $get = $this->M_crud->getFirstCandidateByParty($party_id, $voting_id);
+        foreach ($get->result_array() as $row) {
+            $candidate_id = $row["candidate_id"];
+            $candidate_name = $row["candidate_name"];
+        }
 
-        // $data = array(
-        //     'candidate_id' => $candidate_id,
-        //     'voter_id' => $voter_id
-        // );
+        $data = array(
+            'candidate_id' => $candidate_id,
+            'voter_id' => $voter_id
+        );
 
-        // $this->M_crud->input_data($data, 'election');
-        echo json_encode(array("status" => true));
+        $this->M_crud->input_data($data, 'election');
+        echo json_encode(array(
+            "status" => true,
+            "candidate_name" => $candidate_name
+        ));
     }
 }
