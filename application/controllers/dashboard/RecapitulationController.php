@@ -53,6 +53,33 @@ class RecapitulationController extends CI_Controller
     }
     public function indexSelection()
     {
-        $this->template->load('layouts/app', 'dashboard/selection/index');
+        if ($this->session->userdata('role') == "Admin") {
+            redirect('login_admin');
+        }
+        $where = array(
+            'is_active' => 1,
+        );
+        $data['items'] = $this->M_crud->edit_data($where, 'voting')->result();
+        $this->template->load('layouts/app', 'dashboard/selection/index', $data);
+    }
+
+    public function showSelection($id)
+    {
+        if ($this->session->userdata('role') == "Admin") {
+            redirect('login_admin');
+        }
+        $where = array(
+            'is_active' => 1,
+            'voting_id' => $id
+        );
+        $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
+        $data['title'] = $voting_data->name;
+
+        $where = array(
+            'voting_id' => $id
+        );
+
+        $data['items'] = $this->M_crud->edit_data($where, 'view_election')->result();
+        $this->template->load('layouts/app', 'dashboard/selection/show', $data);
     }
 }

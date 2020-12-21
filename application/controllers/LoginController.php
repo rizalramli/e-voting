@@ -66,7 +66,7 @@ class LoginController extends CI_Controller
                     'role' => $query->row('role')
                 );
                 $this->session->set_userdata($data_session);
-                if ($query->row('role') == "admin") {
+                if ($query->row('role') == "Admin") {
                     redirect('voting');
                 } else {
                     redirect('selection');
