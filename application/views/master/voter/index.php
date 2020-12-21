@@ -26,10 +26,10 @@
                         foreach ($items as $item) :
                         ?>
                             <tr>
-                                <td><?php echo $i ?></td>
-                                <td><?php echo $item->name ?></td>
-                                <td><?php echo $item->email ?></td>
-                                <td>
+                                <td class="align-middle"><?php echo $i ?></td>
+                                <td class="align-middle"><?php echo $item->name ?></td>
+                                <td class="align-middle"><?php echo $item->email ?></td>
+                                <td class="align-middle">
                                     <?php if ($item->password == null) {
                                         echo '<span class="badge badge-danger">Belum</span>';
                                     } else {
@@ -38,7 +38,6 @@
                                 </td>
                             </tr>
                         <?php
-
                             $i++;
                         endforeach
                         ?>

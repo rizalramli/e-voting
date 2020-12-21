@@ -12,6 +12,7 @@
                 <table width="100%" class="table table-sm table-striped" id="dataTables">
                     <thead>
                         <tr>
+                            <th scope="col">No</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Jam Mulai</th>
@@ -20,8 +21,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($items as $item): ?>
+                        <?php
+                        $i = 1;
+                        foreach ($items as $item) :
+                        ?>
                             <tr>
+                                <td class="align-middle"><?php echo $i ?></td>
                                 <td class="align-middle"><?php echo $item->name ?></td>
                                 <td class="align-middle"><?php echo date('d F Y', strtotime($item->date)) ?></td>
                                 <td class="align-middle"><?php echo date('H:i', strtotime($item->start)) ?></td>
@@ -30,7 +35,10 @@
                                     <a href="<?php echo base_url('voting/' . $item->voting_id . '/show') ?>" class="btn btn-sm btn-warning">Detail</a>
                                 </td>
                             </tr>
-                        <?php endforeach?>
+                        <?php
+                            $i++;
+                        endforeach
+                        ?>
                     </tbody>
                 </table>
             </div>
