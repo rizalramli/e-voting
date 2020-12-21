@@ -58,4 +58,10 @@ class M_crud extends CI_Model
         $this->db->limit(1);
         return $this->db->get('view_member');
     }
+
+    public function get_last_data_after_input($data, $table)
+    {
+        $this->db->insert($table, $data);
+        return $this->db->insert_id();
+    }
 }

@@ -42,6 +42,22 @@
                         </div>
                     </div>
                     <div class="row">
+                        <?php
+                        foreach ($party_item as $item) :
+                        ?>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox mt-2">
+                                        <input type="checkbox" name="party_id[]" value="<?php echo $item->party_id ?>" class="custom-control-input cb_party" id="party_id<?php echo $item->party_id ?>">
+                                        <label class="custom-control-label" for="party_id<?php echo $item->party_id ?>"><?php echo $item->name ?></label>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        endforeach
+                        ?>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan</button>

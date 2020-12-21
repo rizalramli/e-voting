@@ -19,6 +19,12 @@ class CandidateController extends CI_Controller
     public function create($id)
     {
         $data['voting_id'] = $id;
+
+        $where = array(
+            'is_active' => 1,
+        );
+        $data['party_item'] = $this->M_crud->edit_data($where, 'party')->result();
+
         $this->template->load('layouts/app', 'master/candidate/create', $data);
     }
 
@@ -44,7 +50,20 @@ class CandidateController extends CI_Controller
                 'number' => $number,
                 'is_active' => 1
             );
-            $this->M_crud->input_data($data, 'candidate');
+            $candidate_id = $this->M_crud->get_last_data_after_input($data, 'candidate');
+
+            if (isset($_POST['party_id'])) {
+                // tambah detail transaksi
+                for ($i = 0; $i < count($this->input->post('party_id')); $i++) {
+                    $party_id = $this->input->post('party_id')[$i];
+                    $data = array(
+                        'candidate_id' => $candidate_id,
+                        'party_id' => $party_id
+                    );
+                    $this->M_crud->input_data($data, 'member');
+                }
+            }
+
             redirect('voting/' . $voting_id . '/show');
         } else {
             $data['voting_id'] = $voting_id;
