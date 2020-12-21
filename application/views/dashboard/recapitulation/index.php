@@ -23,7 +23,8 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="text-center">Hasil</h5>
+                            <h5 class="text-center">Hasil BEM</h5>
+                            <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total_bem ?></h6>
                             <table width="100%" class="table table-sm table-striped dataTables">
                                 <thead>
                                     <tr>
@@ -61,7 +62,8 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="text-center">Hasil</h5>
+                            <h5 class="text-center">Hasil BLM</h5>
+                            <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total_blm ?></h6>
                             <table width="100%" class="table table-sm table-striped dataTables">
                                 <thead>
                                     <tr>
@@ -95,7 +97,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="text-center">Hasil Partai</h5>
-                            <?php foreach ($result_data_party_blm as $item_data_party_blm) : ?>
+                            <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total_blm ?></h6>
+                            <?php foreach ($result_data_party_blm as $item_data_party_blm) :
+                                $percentage_party_blm = ($item_data_party_blm->election_total * 100) / $election_grand_total_blm;
+                            ?>
                                 <div class="card">
                                     <div class="row no-gutters">
                                         <div class="col-sm-4" style="background: #868e96;">
@@ -104,7 +109,7 @@
                                         <div class="col-sm-8">
                                             <div class="card-body">
                                                 <h5 class="card-title"><?php echo $item_data_party_blm->party_name ?></h5>
-                                                <p class="card-text"><?php echo $item_data_party_blm->election_total ?> Suara / 70 %</p>
+                                                <p class="card-text"><?php echo $item_data_party_blm->election_total ?> Suara / <?php echo $percentage_party_blm ?> %</p>
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +126,8 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="text-center">Hasil</h5>
+                            <h5 class="text-center">Hasil DLM</h5>
+                            <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total_dlm ?></h6>
                             <table width="100%" class="table table-sm table-striped dataTables">
                                 <thead>
                                     <tr>
@@ -155,7 +161,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="text-center">Hasil Partai</h5>
-                            <?php foreach ($result_data_party_dlm as $item_data_party_dlm) : ?>
+                            <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total_dlm ?></h6>
+                            <?php foreach ($result_data_party_dlm as $item_data_party_dlm) :
+                                $percentage_party_dlm = ($item_data_party_dlm->election_total * 100) / $election_grand_total_dlm;
+                            ?>
                                 <div class="card">
                                     <div class="row no-gutters">
                                         <div class="col-sm-4" style="background: #868e96;">
@@ -164,7 +173,7 @@
                                         <div class="col-sm-8">
                                             <div class="card-body">
                                                 <h5 class="card-title"><?php echo $item_data_party_dlm->party_name ?></h5>
-                                                <p class="card-text"><?php echo $item_data_party_dlm->election_total ?> Suara / 70 %</p>
+                                                <p class="card-text"><?php echo $item_data_party_dlm->election_total ?> Suara / <?php echo $percentage_party_dlm ?> %</p>
                                             </div>
                                         </div>
                                     </div>
