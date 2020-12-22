@@ -4,7 +4,7 @@
   }
 
   body.layout-3 .main-content {
-    padding-top: 210px;
+    padding-top: 120px;
   }
 
   body.layout-3 .navbar.navbar-secondary {
@@ -14,20 +14,27 @@
 <section class="section">
   <div class="section-body">
 
-    <p><span id="errorMsg"></span></p>
-
-    <!-- Stream video via webcam -->
-    <div class="video-wrap">
-      <video id="video" playsinline autoplay></video>
+    <div class="card">
+      <div class="card-body">
+        <form action="<?php echo base_url('') ?>" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <label for="">Preview Image</label>
+              <div class="form-group">
+                <img id="attachment_preview" alt="&nbsp;" width="150" height="150" />
+              </div>
+              <div class="form-group">
+                <label for="attachment">Foto Pemilih : </label>
+                <input accept="image/*" type="file" name="attachment" class="form-control form-control-sm" id="attachment" onchange="document.getElementById('attachment_preview').src = window.URL.createObjectURL(this.files[0])">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Simpan Gambar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-
-    <!-- Trigger canvas web API -->
-    <div class="controller">
-      <button id="snap">Capture</button>
-    </div>
-
-    <!-- Webcam video snapshot -->
-    <canvas id="canvas" width="640" height="480"></canvas>
 
     <div class="row">
 
@@ -116,5 +123,3 @@
     </div>
   </div>
 </section>
-
-<script src="<?php echo base_url(); ?>assets/stisla/download_js/webcam.js"></script>

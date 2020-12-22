@@ -20,6 +20,9 @@ class ElectionController extends CI_Controller
         $voter_id = $this->session->userdata('voter_id');
         $where = array('voter_id' => $voter_id);
         $data['election_item'] = $this->M_crud->edit_data($where, 'view_election')->result();
+
+
+
         $this->template->load('layouts/app_voter', 'transaction/election/index', $data);
     }
 
@@ -88,5 +91,27 @@ class ElectionController extends CI_Controller
             "status" => true,
             "candidate_name" => $candidate_name
         ));
+    }
+
+    private function _uploadImage($attachment)
+    {
+        $config['upload_path']          = './assets/photo/attachment/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['file_name']             = $attachment;
+        $config['overwrite']             = true;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('attachment')) {
+            return $this->upload->data('file_name');
+        }
+    }
+
+    private function _deleteImage($id)
+    {
+        $where = array('voter_id' => $id);
+        $data = $this->M_crud->edit_data($where, 'voter')->row();
+        $filename = explode(".", $data->attachment)[0];
+        return array_map('unlink', glob(FCPATH . "assets/photo/attachment/$filename.*"));
     }
 }
