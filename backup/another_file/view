@@ -69,3 +69,31 @@ FROM
     member m USING(candidate_id) JOIN
     party p USING(party_id)
 GROUP BY p.party_id, c.voting_id;
+
+CREATE VIEW view_recapitulation_party_sah AS
+SELECT 
+    e.election_id,
+    c.candidate_id, c.voting_id,
+    m.member_id,
+    p.party_id, p.name AS party_name, p.photo AS party_photo, COUNT(p.party_id) AS election_total
+FROM 
+    election e JOIN 
+    candidate c USING(candidate_id) JOIN
+    member m USING(candidate_id) JOIN
+    party p USING(party_id)
+WHERE e.election_status = 1
+GROUP BY p.party_id, c.voting_id;
+
+CREATE VIEW view_recapitulation_party_tidak_sah AS
+SELECT 
+    e.election_id,
+    c.candidate_id, c.voting_id,
+    m.member_id,
+    p.party_id, p.name AS party_name, p.photo AS party_photo, COUNT(p.party_id) AS election_total
+FROM 
+    election e JOIN 
+    candidate c USING(candidate_id) JOIN
+    member m USING(candidate_id) JOIN
+    party p USING(party_id)
+WHERE e.election_status = 0
+GROUP BY p.party_id, c.voting_id;
