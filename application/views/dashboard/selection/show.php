@@ -20,6 +20,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Waktu</th>
+                                <th scope="col">Status</th>
                                 <?php if ($this->session->userdata("role") == "KPU") { ?>
                                     <th scope="col">Action</th>
                                 <?php } ?>
@@ -34,6 +35,13 @@
                                     <td class="align-middle"><?php echo $i ?></td>
                                     <td class="align-middle"><?php echo $item->name ?></td>
                                     <td class="align-middle"><?php echo $item->create_at ?></td>
+                                    <td class="align-middle">
+                                        <?php if ($item->election_status == 0) {
+                                            echo '<span class="badge badge-danger">Tidak Sah</span>';
+                                        } else {
+                                            echo '<span class="badge badge-success">Sah</span>';
+                                        } ?>
+                                    </td>
                                     <?php if ($this->session->userdata("role") == "KPU") { ?>
                                         <td class="align-middle">
                                             <button class="btn btn-warning viewDetail" id="<?php echo $item->election_id ?>">View</button>
