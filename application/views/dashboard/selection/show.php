@@ -19,6 +19,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Waktu</th>
                                 <th scope="col">Status</th>
                                 <?php if ($this->session->userdata("role") == "KPU") { ?>
@@ -34,6 +35,7 @@
                                 <tr>
                                     <td class="align-middle"><?php echo $i ?></td>
                                     <td class="align-middle"><?php echo $item->name ?></td>
+                                    <td class="align-middle"><?php echo $item->email ?></td>
                                     <td class="align-middle"><?php echo $item->create_at ?></td>
                                     <td class="align-middle">
                                         <?php if ($item->election_status == 0) {
