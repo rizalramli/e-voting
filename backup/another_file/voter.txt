@@ -258,7 +258,7 @@ INSERT INTO voter VALUES
     (248,NULL,'fakhruddin.alghiffari-2017@fh.unair.ac.id',NULL,NULL,0,1),
     (249,NULL,'ananda.cindy-2017@fh.unair.ac.id',NULL,NULL,0,1),
     (250,NULL,'syahnaz-2017@fh.unair.ac.id',NULL,NULL,0,1);
-INSERT INTO e_voting VALUES
+INSERT INTO voter VALUES
     (251,NULL,'dimas.erlando.ramadhany-2017@fh.unair.ac.id',NULL,NULL,0,1),
     (252,NULL,'dafiq.nuansa.arifano-2017@fh.unair.ac.id',NULL,NULL,0,1),
     (253,NULL,'enudio.aprilian.utoyo-2017@fh.unair.ac.id',NULL,NULL,0,1),
@@ -509,7 +509,7 @@ INSERT INTO e_voting VALUES
     (498,NULL,'josi.edward.lakburlawal-2018@fh.unair.ac.id',NULL,NULL,0,1),
     (499,NULL,'aditya.beriyan.gusti-2018@fh.unair.ac.id',NULL,NULL,0,1),
     (500,NULL,'alya.azalia.permata-2018@fh.unair.ac.id',NULL,NULL,0,1);
-INSERT INTO e_voting VALUES
+INSERT INTO voter VALUES
     (501,NULL,'bima.satriojati-2018@fh.unair.ac.id',NULL,NULL,0,1),
     (502,NULL,'hasbi.ilman.maulana-2018@fh.unair.ac.id',NULL,NULL,0,1),
     (503,NULL,'muhammad.hafidz.rafiansyah-2018@fh.unair.ac.id',NULL,NULL,0,1),
@@ -760,7 +760,7 @@ INSERT INTO e_voting VALUES
     (748,NULL,'dinda.ayu.alfiana-2019@fh.unair.ac.id',NULL,NULL,0,1),
     (749,NULL,'muhammad.alfariez.dyas-2019@fh.unair.ac.id',NULL,NULL,0,1),
     (750,NULL,'angeline.kolopaking-2019@fh.unair.ac.id',NULL,NULL,0,1);
-INSERT INTO e_voting VALUES
+INSERT INTO voter VALUES
     (751,NULL,'thania.ayu.viasmaary-2019@fh.unair.ac.id',NULL,NULL,0,1),
     (752,NULL,'wanda.farda.wahdini-2019@fh.unair.ac.id',NULL,NULL,0,1),
     (753,NULL,'muhammad.reza.awan-2019@fh.unair.ac.id',NULL,NULL,0,1),
@@ -1011,7 +1011,7 @@ INSERT INTO e_voting VALUES
     (998,NULL,'syelma.vinita.anjanie-2020@fh.unair.ac.id',NULL,NULL,0,1),
     (999,NULL,'tessana.pridia.paramitha-2020@fh.unair.ac.id',NULL,NULL,0,1),
     (1000,NULL,'farah.qatifa.elzahra-2020@fh.unair.ac.id',NULL,NULL,0,1);
-INSERT INTO e_voting VALUES
+INSERT INTO voter VALUES
     (1001,NULL,'ivana.zahra.robby-2020@fh.unair.ac.id',NULL,NULL,0,1),
     (1002,NULL,'alifia.nuril.bais-2020@fh.unair.ac.id',NULL,NULL,0,1),
     (1003,NULL,'alfina.anam.damayanti-2020@fh.unair.ac.id',NULL,NULL,0,1),
