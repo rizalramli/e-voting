@@ -93,22 +93,24 @@
                   </div>
 
                   <?php
-                  if (!$done) {
+                  if ($attachment != "") {
+                    if (!$done) {
                   ?>
-                    <!-- jika belum memilih -->
-                    <a href="<?php echo base_url('election/' . $item->voting_id . '/show') ?>" class="ticket-item ticket-more">
-                      Lihat Kandidat <i class="fas fa-chevron-right"></i>
-                    </a>
+                      <!-- jika belum memilih -->
+                      <a href="<?php echo base_url('election/' . $item->voting_id . '/show') ?>" class="ticket-item ticket-more">
+                        Lihat Kandidat <i class="fas fa-chevron-right"></i>
+                      </a>
+
+                    <?php
+                    } else {
+                    ?>
+                      <!-- jika sudah memilih -->
+                      <div class="ticket-item ticket-more">
+                        &nbsp;
+                      </div>
 
                   <?php
-                  } else {
-                  ?>
-                    <!-- jika sudah memilih -->
-                    <div class="ticket-item ticket-more">
-                      &nbsp;
-                    </div>
-
-                  <?php
+                    }
                   }
                   ?>
 
