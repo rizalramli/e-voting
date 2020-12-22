@@ -112,6 +112,9 @@ class RecapitulationController extends CI_Controller
 
     public function editSelection($id)
     {
+        if ($this->session->userdata('role') == "Admin") {
+            redirect('login_admin');
+        }
         $where = array(
             'election_id' => $id,
         );
@@ -125,6 +128,9 @@ class RecapitulationController extends CI_Controller
 
     public function updateSelectionTidakSah()
     {
+        if ($this->session->userdata('role') == "Admin") {
+            redirect('login_admin');
+        }
         $election_id = $this->input->post('election_id');
         $data = array(
             'election_status' => 0,
@@ -140,6 +146,9 @@ class RecapitulationController extends CI_Controller
 
     public function updateSelectionSah()
     {
+        if ($this->session->userdata('role') == "Admin") {
+            redirect('login_admin');
+        }
         $election_id = $this->input->post('election_id');
         $data = array(
             'election_status' => 1,

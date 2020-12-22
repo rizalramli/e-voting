@@ -13,14 +13,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4 mb-2">
-                                    <span class="badge badge-info">Suara Masuk : <?php echo $election_grand_total ?></span>
-                                </div>
-                                <div class="col-md-3 mb-2 text-right">
-                                    <span class="badge badge-success">Sah : <?php echo $election_sah ?></span>
-                                </div>
-                                <div class="col-md-5 mb-2 text-right">
-                                    <span class="badge badge-danger">Tidak Sah : <?php echo $election_tidak_sah ?></span>
+                                <div class="row">
+                                    <h6 class="ml-4 text-primary">Total Pemilih : <?php echo $election_grand_total ?></h6>
+                                    <h6 class="ml-4 text-primary">Sah : <?php echo $election_sah ?></h6>
+                                    <h6 class="ml-4 text-primary">Tidak Sah : <?php echo $election_tidak_sah ?></h6>
                                 </div>
                             </div>
                             <div class="table-responsive">
