@@ -31,42 +31,54 @@ class ElectionController extends CI_Controller
     public function show($id)
     {
         $voter_id = $this->session->userdata('voter_id');
-        $where = array(
-            'voter_id' => $voter_id,
-            'voting_id' => $id
-        );
 
-        $query = $this->M_crud->edit_data($where, 'view_election')->num_rows();
+        $where = array('voter_id' => $voter_id);
+        $data_voter = $this->M_crud->edit_data($where, 'voter')->row();
+        $attachment = $data_voter->attachment;
 
-        if ($query == 0) {
-            if ($id == 1) {
-                $where = array(
-                    'is_active' => 1,
-                    'voting_id' => $id
-                );
-                $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
-                $data['title'] = $voting_data->name;
-                $data['party_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
-                $data['items'] = $this->M_crud->get_data_group_by('view_member', $where, 'candidate_id', 'number')->result();
+        if ($attachment != "") {
+            $where = array(
+                'voter_id' => $voter_id,
+                'voting_id' => $id
+            );
 
-                $this->template->load('layouts/app_voter', 'transaction/election/show', $data);
+            $query = $this->M_crud->edit_data($where, 'view_election')->num_rows();
+
+            if ($query == 0) {
+                if ($id == 1) {
+                    $where = array(
+                        'is_active' => 1,
+                        'voting_id' => $id
+                    );
+                    $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
+                    $data['title'] = $voting_data->name;
+                    $data['party_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
+                    $data['items'] = $this->M_crud->get_data_group_by('view_member', $where, 'candidate_id', 'number')->result();
+
+                    $this->template->load('layouts/app_voter', 'transaction/election/show', $data);
+                } else {
+                    $where = array(
+                        'is_active' => 1,
+                        'voting_id' => $id
+                    );
+                    $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
+                    $data['title'] = $voting_data->name;
+                    $data['party_item'] = $this->M_crud->get_data_group_by('view_member', $where, 'party_id', 'party_name')->result();
+                    $data['member_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
+
+                    $this->template->load('layouts/app_voter', 'transaction/election/show2', $data);
+                }
             } else {
-                $where = array(
-                    'is_active' => 1,
-                    'voting_id' => $id
-                );
-                $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
-                $data['title'] = $voting_data->name;
-                $data['party_item'] = $this->M_crud->get_data_group_by('view_member', $where, 'party_id', 'party_name')->result();
-                $data['member_item'] = $this->M_crud->edit_data($where, 'view_member')->result();
-
-                $this->template->load('layouts/app_voter', 'transaction/election/show2', $data);
+                echo "<script>
+                    alert('Anda Sudah Melakukan Pemilihan !');
+                    window.location = '" . base_url("login") . "';
+                    </script>";
             }
         } else {
             echo "<script>
-                alert('Anda Sudah Melakukan Pemilihan !');
-                window.location = '" . base_url("login") . "';
-                </script>";
+            alert('Upload Foto Bukti Pemilihan Terlebih Dahulu !');
+            window.location = '" . base_url("login") . "';
+            </script>";
         }
     }
 
