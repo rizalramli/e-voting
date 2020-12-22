@@ -21,6 +21,10 @@ class ElectionController extends CI_Controller
         $where = array('voter_id' => $voter_id);
         $data['election_item'] = $this->M_crud->edit_data($where, 'view_election')->result();
 
+        $data_voter = $this->M_crud->edit_data($where, 'voter')->row();
+
+        $data['attachment'] = $data_voter->attachment;
+
         $this->template->load('layouts/app_voter', 'transaction/election/index', $data);
     }
 
@@ -56,9 +60,14 @@ class ElectionController extends CI_Controller
         $candidate_id = $this->input->post('candidate_id');
         $voter_id = $this->session->userdata('voter_id');
 
+        $where = array('voter_id' => $voter_id);
+        $data_voter = $this->M_crud->edit_data($where, 'voter')->row();
+        $attachment = $data_voter->attachment;
+
         $data = array(
             'candidate_id' => $candidate_id,
-            'voter_id' => $voter_id
+            'voter_id' => $voter_id,
+            'attachment' => $attachment
         );
 
         $this->M_crud->input_data($data, 'election');
@@ -79,9 +88,14 @@ class ElectionController extends CI_Controller
             $candidate_name = $row["candidate_name"];
         }
 
+        $where = array('voter_id' => $voter_id);
+        $data_voter = $this->M_crud->edit_data($where, 'voter')->row();
+        $attachment = $data_voter->attachment;
+
         $data = array(
             'candidate_id' => $candidate_id,
-            'voter_id' => $voter_id
+            'voter_id' => $voter_id,
+            'attachment' => $attachment
         );
 
         $this->M_crud->input_data($data, 'election');

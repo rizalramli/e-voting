@@ -14,27 +14,35 @@
 <section class="section">
   <div class="section-body">
 
-    <div class="card">
-      <div class="card-body">
-        <form action="<?php echo base_url('transaction/ElectionController/sendImage') ?>" method="post" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <label for="">Preview Image</label>
-              <div class="form-group">
-                <img id="attachment_preview" alt="&nbsp;" width="150" height="150" />
-              </div>
-              <div class="form-group">
-                <label for="attachment">Foto Pemilih : </label>
-                <input required accept="image/*" type="file" name="attachment" class="form-control form-control-sm" id="attachment" onchange="document.getElementById('attachment_preview').src = window.URL.createObjectURL(this.files[0])">
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary">Simpan Gambar</button>
+    <?php
+    if ($attachment == "") {
+    ?>
+
+      <div class="card">
+        <div class="card-body">
+          <form action="<?php echo base_url('transaction/ElectionController/sendImage') ?>" method="post" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <label for="">Preview Image</label>
+                <div class="form-group">
+                  <img id="attachment_preview" alt="&nbsp;" width="150" height="150" />
+                </div>
+                <div class="form-group">
+                  <label for="attachment">Foto Pemilih : </label>
+                  <input required accept="image/*" type="file" name="attachment" class="form-control form-control-sm" id="attachment" onchange="document.getElementById('attachment_preview').src = window.URL.createObjectURL(this.files[0])">
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Simpan Gambar</button>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+
+    <?php
+    }
+    ?>
 
     <div class="row">
 
