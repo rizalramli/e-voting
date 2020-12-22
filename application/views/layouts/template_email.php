@@ -46,10 +46,10 @@
         }
 
         .email-content {
-            width: 50%;
+            width: 100%;
             margin: 0;
             padding: 0;
-            -premailer-width: 50%;
+            -premailer-width: 100%;
             -premailer-cellpadding: 0;
             -premailer-cellspacing: 0;
         }
