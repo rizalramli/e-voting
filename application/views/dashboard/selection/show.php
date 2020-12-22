@@ -7,8 +7,11 @@
         <div class="card">
             <div class="card-header">
                 <a class="btn btn-danger" href="<?php echo base_url('selection') ?>">Kembali</a>
-                <h4 class="ml-4">Total Pemilih : <?php echo $election_num_rows ?></h4>
+                <h4 class="ml-4">Total Pemilih : <?php echo $election_grand_total ?></h4>
+                <h4 class="ml-4">Sah : <?php echo $election_sah ?></h4>
+                <h4 class="ml-4">Tidak Sah : <?php echo $election_tidak_sah ?></h4>
             </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table width="100%" class="table table-sm table-striped" id="dataTables">

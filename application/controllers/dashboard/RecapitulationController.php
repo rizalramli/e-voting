@@ -85,6 +85,7 @@ class RecapitulationController extends CI_Controller
             'is_active' => 1,
             'voting_id' => $id
         );
+
         $voting_data = $this->M_crud->edit_data($where, 'voting')->row();
         $data['title'] = $voting_data->name;
 
@@ -92,15 +93,27 @@ class RecapitulationController extends CI_Controller
             'voting_id' => $id
         );
 
+        $where_sah   = array(
+            'voting_id'  => $id,
+            'election_status' => 1
+        );
+
+        $where_tidak_sah   = array(
+            'voting_id'  => $id,
+            'election_status' => 0
+        );
+
         $data['items'] = $this->M_crud->edit_data($where, 'view_election')->result();
-        $data['election_num_rows'] = $this->M_crud->edit_data($where, 'view_election')->num_rows();
+        $data['election_grand_total'] = $this->M_crud->edit_data($where, 'view_election')->num_rows();
+        $data['election_sah'] = $this->M_crud->edit_data($where_sah, 'view_election')->num_rows();
+        $data['election_tidak_sah'] = $this->M_crud->edit_data($where_tidak_sah, 'view_election')->num_rows();
         $this->template->load('layouts/app', 'dashboard/selection/show', $data);
     }
 
     public function editSelection($id)
     {
         $where = array(
-            'election_id' => $id
+            'election_id' => $id,
         );
         $data = $this->M_crud->edit_data($where, 'view_election')->row();
         echo json_encode(array(
