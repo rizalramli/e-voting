@@ -33,6 +33,30 @@ FROM
     voting v USING(voting_id)
 GROUP BY c.candidate_id, v.voting_id;
 
+CREATE VIEW view_recapitulation_candidate_sah AS
+SELECT 
+    e.election_id, 
+    c.candidate_id, COUNT(c.candidate_id) AS election_sah, 
+    v.voting_id
+FROM 
+    election e JOIN 
+    candidate c USING(candidate_id) JOIN
+    voting v USING(voting_id)
+WHERE e.election_status = 1
+GROUP BY c.candidate_id, v.voting_id;
+
+CREATE VIEW view_recapitulation_candidate_tidak_sah AS
+SELECT 
+    e.election_id, 
+    c.candidate_id, COUNT(c.candidate_id) AS election_sah, 
+    v.voting_id
+FROM 
+    election e JOIN 
+    candidate c USING(candidate_id) JOIN
+    voting v USING(voting_id)
+WHERE e.election_status = 0
+GROUP BY c.candidate_id, v.voting_id;
+
 CREATE VIEW view_recapitulation_party AS
 SELECT 
     e.election_id,
