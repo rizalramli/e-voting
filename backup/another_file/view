@@ -75,7 +75,7 @@ SELECT
     e.election_id,
     c.candidate_id, c.voting_id,
     m.member_id,
-    p.party_id, p.name AS party_name, p.photo AS party_photo, COUNT(p.party_id) AS election_total
+    p.party_id, COUNT(p.party_id) AS election_sah
 FROM 
     election e JOIN 
     candidate c USING(candidate_id) JOIN
@@ -89,7 +89,7 @@ SELECT
     e.election_id,
     c.candidate_id, c.voting_id,
     m.member_id,
-    p.party_id, p.name AS party_name, p.photo AS party_photo, COUNT(p.party_id) AS election_total
+    p.party_id, COUNT(p.party_id) AS election_sah
 FROM 
     election e JOIN 
     candidate c USING(candidate_id) JOIN
