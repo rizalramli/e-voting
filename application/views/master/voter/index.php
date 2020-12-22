@@ -19,6 +19,7 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Status Verifikasi</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,6 +37,9 @@
                                         } else {
                                             echo '<span class="badge badge-success">Sudah</span>';
                                         } ?>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="<?php echo base_url('voter/' . $item->email . '/sendEmailByEmail') ?>" class="btn btn-sm btn-warning">Send</a>
                                     </td>
                                 </tr>
                             <?php

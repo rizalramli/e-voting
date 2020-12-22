@@ -82,6 +82,62 @@ class VoterController extends CI_Controller
         redirect('voter');
     }
 
+    public function sendEmailByEmail($email)
+    {
+        if (!$this->session->userdata('username')) {
+            redirect('login_admin');
+        }
+        if ($this->session->userdata('role') != "Admin") {
+            redirect('login_admin');
+        }
+
+        $table = 'voter';
+        $where = array('email' => $email);
+        $voter = $this->M_crud->edit_data($where, $table)->result();
+
+        $config = [
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'protocol'  => 'smtp',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'pemilu.fh.unair@gmail.com',  // Email gmail
+            'smtp_pass'   => 'rahasia_banget321',  // Password gmail
+            'smtp_crypto' => 'ssl',
+            'smtp_port'   => 465,
+            'crlf'    => "\r\n",
+            'newline' => "\r\n"
+        ];
+
+        $this->load->library('email', $config);
+        foreach ($voter as $item) {
+            $this->email->from('pemilu.fh.unair@gmail.com', 'PEMIRA FH UNAIR 2020');
+
+            $this->email->to($item->email);
+            $this->email->subject('Verify Email');
+
+            $email_enkripsi = $this->encrypt->encode($item->email);
+
+            $data = array(
+                'email' => $email_enkripsi
+            );
+
+            // Isi email
+            $body = $this->load->view('layouts/template_email', $data, TRUE);
+            $this->email->message($body);
+
+            $this->email->send();
+
+            $data = array(
+                'send_status' => 1,
+            );
+            $where = array(
+                'voter_id' => $item->voter_id
+            );
+            $this->M_crud->update_data($where, $data, $table);
+        }
+        redirect('voter');
+    }
+
     public function verify($id)
     {
         $email_decrypt = $this->encrypt->decode($id);

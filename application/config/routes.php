@@ -76,6 +76,7 @@ $route['party/(:any)/delete'] = 'master/PartyController/delete/$1';
 
 $route['voter']           = 'master/VoterController/index';
 $route['voter/sendEmail'] = 'master/VoterController/sendEmail';
+$route['voter/(:any)/sendEmailByEmail']   = 'master/VoterController/sendEmailByEmail/$1';
 $route['verify/(:any)'] = 'master/VoterController/verify/$1';
 $route['verify/submit/store']  = 'master/VoterController/verifyStore';
 
