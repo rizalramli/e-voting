@@ -21,8 +21,6 @@ class ElectionController extends CI_Controller
         $where = array('voter_id' => $voter_id);
         $data['election_item'] = $this->M_crud->edit_data($where, 'view_election')->result();
 
-
-
         $this->template->load('layouts/app_voter', 'transaction/election/index', $data);
     }
 
@@ -91,6 +89,23 @@ class ElectionController extends CI_Controller
             "status" => true,
             "candidate_name" => $candidate_name
         ));
+    }
+
+    public function sendImage()
+    {
+        $voter_id = $this->session->userdata('voter_id');
+        $attachment = uniqid();
+
+        $where = array(
+            'voter_id' => $voter_id
+        );
+
+        $data = array(
+            'attachment' => $this->_uploadImage($attachment)
+        );
+
+        $this->M_crud->update_data($where, $data, 'voter');
+        redirect('election');
     }
 
     private function _uploadImage($attachment)

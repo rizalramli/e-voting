@@ -16,7 +16,7 @@
 
     <div class="card">
       <div class="card-body">
-        <form action="<?php echo base_url('') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url('transaction/ElectionController/sendImage') ?>" method="post" enctype="multipart/form-data">
           <div class="row">
             <div class="col-md-12 text-center">
               <label for="">Preview Image</label>
@@ -25,7 +25,7 @@
               </div>
               <div class="form-group">
                 <label for="attachment">Foto Pemilih : </label>
-                <input accept="image/*" type="file" name="attachment" class="form-control form-control-sm" id="attachment" onchange="document.getElementById('attachment_preview').src = window.URL.createObjectURL(this.files[0])">
+                <input required accept="image/*" type="file" name="attachment" class="form-control form-control-sm" id="attachment" onchange="document.getElementById('attachment_preview').src = window.URL.createObjectURL(this.files[0])">
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary">Simpan Gambar</button>
