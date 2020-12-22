@@ -44,11 +44,16 @@
                                                 <tr>
                                                     <td align="left" width="2%"><?php echo $item2->number ?>.
                                                     </td>
-                                                    <td align="left" width="13%"><img class="ml-3 mr-2 rounded px-0" width="30" height="30" src="<?php echo base_url('assets/photo/kandidat/' . $item2->candidate_photo) ?>" alt="avatar"></td>
+                                                    <td align="left" width="13%">
+                                                        <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $item2->candidate_id ?>">
+                                                            <img class="ml-3 mr-2 rounded px-0" width="30" height="30" src="<?php echo base_url('assets/photo/kandidat/' . $item2->candidate_photo) ?>" alt="">
+                                                        </a>
+                                                    </td>
                                                     <td align="left" width="75%"><?php echo $item2->candidate_name ?></td>
                                                     <td width="10%" align="right"><button onclick="storeElection(<?php echo $item2->candidate_id ?>, '<?php echo $item2->candidate_name ?>')" class="btn btn-primary">Pilih</button></td>
                                                 </tr>
                                             </table>
+
                                         </li>
                                 <?php
                                     }
@@ -63,7 +68,46 @@
         </div>
     </div>
 </section>
+<?php foreach ($party_item as $item) : ?>
+    <?php
+    foreach ($member_item as $item2) :
+        if ($item->party_id == $item2->party_id) {
+    ?>
+            <div class="modal fade" id="exampleModal<?php echo $item2->candidate_id ?>" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detail Foto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table>
+                                <table width="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <img width="300px" height="300px" src="<?php echo base_url('assets/photo/kandidat/' . $item2->candidate_photo) ?>" alt="image" id="election_photo">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h4 class="text-center mt-2"><?php echo $item2->candidate_name ?></h4>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <?php
+        }
+    endforeach; ?>
 
+<?php endforeach ?>
+<!-- Modal Logout -->
+
+<!-- end modal -->
 <script>
     function storeElection(candidate_id, name) {
         var result = confirm(" Anda Ingin Memilih Kandidat " + name + " ?");
