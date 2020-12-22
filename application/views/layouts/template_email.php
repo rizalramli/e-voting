@@ -276,7 +276,7 @@
                                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                                     <tr>
                                                                         <td>
-                                                                            <a style="color:white;" href="http://localhost/e-voting/verify/<?php echo $email ?>" class="button button--green" target="_blank">Verifikasi Email</a>
+                                                                            <a style="color:white;" href="<?php echo base_url('verify/') . $email ?>" class="button button--green" target="_blank">Verifikasi Email</a>
                                                                         </td>
                                                                     </tr>
                                                                 </table>
