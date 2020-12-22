@@ -119,12 +119,13 @@
             </div>
           </div>
         </div>
+
       <?php $j++;
       endforeach;
       if ($j == 0) {
         echo '<div class="col-md-12">
         <div class="text-center">
-          <h3>Pemilihan Belum Dimulai !</h3>
+          <h3>Belum Ada Acara Pemilihan !</h3>
         </div>
       </div>';
       }
