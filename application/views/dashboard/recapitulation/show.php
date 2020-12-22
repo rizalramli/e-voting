@@ -40,19 +40,22 @@
                                     <?php
                                     $i = 1;
                                     foreach ($result_data as $item_data) :
-                                        $sah = "";
+                                        $sah = 0;
                                         foreach ($result_data_sah as $item_data2) :
                                             if ($item_data->candidate_id == $item_data2->candidate_id) {
                                                 $sah = $item_data2->election_sah;
                                             }
                                         endforeach;
-                                        $tidak_sah = "";
+                                        $tidak_sah = 0;
                                         foreach ($result_data_tidak_sah as $item_data3) :
                                             if ($item_data->candidate_id == $item_data3->candidate_id) {
                                                 $tidak_sah = $item_data3->election_tidak_sah;
                                             }
                                         endforeach;
-                                        $percentage = ($sah * 100) / $election_sah;
+                                        $percentage = 0;
+                                        if ($election_sah > 0) {
+                                            $percentage = ($sah * 100) / $election_sah;
+                                        }
                                     ?>
                                         <tr>
                                             <td><?php echo $i ?></td>
@@ -81,19 +84,22 @@
                                 <h6 class="ml-4 text-primary">Tidak Sah : <?php echo $election_tidak_sah ?></h6>
                             </div>
                             <?php foreach ($result_data_party as $item_data_party) :
-                                $sah = "";
+                                $sah = 0;
                                 foreach ($result_data_party_sah as $item_data_party2) :
-                                    if ($item_data->candidate_id == $item_data_party2->candidate_id) {
+                                    if ($item_data_party->party_id == $item_data_party2->party_id) {
                                         $sah = $item_data_party2->election_sah;
                                     }
                                 endforeach;
-                                $tidak_sah = "";
+                                $tidak_sah = 0;
                                 foreach ($result_data_party_tidak_sah as $item_data_party3) :
-                                    if ($item_data->candidate_id == $item_data_party3->candidate_id) {
+                                    if ($item_data_party->party_id == $item_data_party3->party_id) {
                                         $tidak_sah = $item_data_party3->election_tidak_sah;
                                     }
                                 endforeach;
-                                $percentage_party = ($sah * 100) / $election_sah;
+                                $percentage_party = 0;
+                                if ($election_sah > 0) {
+                                    $percentage_party = ($sah * 100) / $election_sah;
+                                }
                             ?>
                                 <div class="card">
                                     <div class="row no-gutters">
