@@ -55,23 +55,23 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
-                                        <span class="badge badge-info">Suara Masuk : <?php echo $election_grand_total ?></span>
-                                    </div>
-                                    <div class="col-md-3 mb-2 text-right">
-                                        <span class="badge badge-success">Sah : 999</span>
-                                    </div>
-                                    <div class="col-md-5 mb-2 text-right">
-                                        <span class="badge badge-danger">Tidak Sah : 999</span>
-                                    </div>
+                                    <h6 class="ml-4 text-primary">Total Pemilih : <?php echo $election_grand_total ?></h6>
+                                    <h6 class="ml-4 text-primary">Sah : 999</h6>
+                                    <h6 class="ml-4 text-primary">Tidak Sah : 999</h6>
                                 </div>
                                 <?php foreach ($result_data_party as $item_data_party) :
                                     $percentage_party = ($item_data_party->election_total * 100) / $election_grand_total;
                                 ?>
                                     <div class="card">
                                         <div class="row no-gutters">
-                                            <div class="col-sm-4" style="background: #868e96;">
-                                                <img width="70px" height="70x" src="<?php echo base_url('assets/photo/partai/' . $item_data_party->party_photo) ?>" class="card-img-top h-100" alt="...">
+                                            <div class="col-sm-4">
+                                                <table width="100%">
+                                                    <tr>
+                                                        <td align="center">
+                                                            <img width="137px" height="137px" src="<?php echo base_url('assets/photo/partai/' . $item_data_party->party_photo) ?>" alt="...">
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                             <div class="col-sm-8">
                                                 <div class="card-body">
