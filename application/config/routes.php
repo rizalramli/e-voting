@@ -97,3 +97,6 @@ $route['recapitulation'] = 'dashboard/RecapitulationController/indexRecapitulati
 $route['recapitulation/(:any)/show_recapitulation'] = 'dashboard/RecapitulationController/showRecapitulation/$1';
 $route['selection'] = 'dashboard/RecapitulationController/indexSelection';
 $route['selection/(:any)/show_selection'] = 'dashboard/RecapitulationController/showSelection/$1';
+$route['selection/edit_selection/(:any)'] = 'dashboard/RecapitulationController/editSelection/$1';
+$route['selection/update_selection/sah'] = 'dashboard/RecapitulationController/updateSelectionSah';
+$route['selection/update_selection/tidak_sah'] = 'dashboard/RecapitulationController/updateSelectionTidakSah';

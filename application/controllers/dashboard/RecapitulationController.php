@@ -96,4 +96,47 @@ class RecapitulationController extends CI_Controller
         $data['election_num_rows'] = $this->M_crud->edit_data($where, 'view_election')->num_rows();
         $this->template->load('layouts/app', 'dashboard/selection/show', $data);
     }
+
+    public function editSelection($id)
+    {
+        $where = array(
+            'election_id' => $id
+        );
+        $data = $this->M_crud->edit_data($where, 'view_election')->row();
+        echo json_encode(array(
+            "election_id" => $data->election_id,
+            "election_photo" => $data->attachment,
+            "name_voter" => $data->name
+        ));
+    }
+
+    public function updateSelectionTidakSah()
+    {
+        $election_id = $this->input->post('election_id');
+        $data = array(
+            'election_status' => 0,
+        );
+
+        $where = array(
+            'election_id' => $election_id
+        );
+
+        $this->M_crud->update_data($where, $data, 'election');
+        echo json_encode(array("status" => true));
+    }
+
+    public function updateSelectionSah()
+    {
+        $election_id = $this->input->post('election_id');
+        $data = array(
+            'election_status' => 1,
+        );
+
+        $where = array(
+            'election_id' => $election_id
+        );
+
+        $this->M_crud->update_data($where, $data, 'election');
+        echo json_encode(array("status" => true));
+    }
 }
