@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2020 at 06:33 PM
+-- Generation Time: Dec 22, 2020 at 06:49 PM
 -- Server version: 5.7.26-29-log
 -- PHP Version: 7.3.25
 
@@ -1134,7 +1134,10 @@ INSERT INTO `voter` (`voter_id`, `name`, `email`, `password`, `attachment`, `sen
 (1088, '', 'tasia.alya-2020@fh.unair.ac.id', '', '', 0, 1),
 (1089, '', 'angeline.regita.nathalia-2020@fh.unair.ac.id', '', '', 0, 1),
 (1090, '', 'ahmad.fathi-2020@fh.unair.ac.id', '', '', 0, 1),
-(1091, '', 'diqa.qothrunnadaa.amanda-2020@fh.unair.ac.id', '', '', 0, 1);
+(1091, '', 'diqa.qothrunnadaa.amanda-2020@fh.unair.ac.id', '', '', 0, 1),
+(1092, '', 'rizkika.palindungan1@gmail.com', '', '', 0, 1),
+(1093, '', 'rizkika.palindungan98@gmail.com', '', '', 0, 1),
+(1094, '', 'rizalramli993@gmail.com', '', '', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -1154,7 +1157,7 @@ ALTER TABLE `voter`
 -- AUTO_INCREMENT for table `voter`
 --
 ALTER TABLE `voter`
-  MODIFY `voter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1092;
+  MODIFY `voter_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1095;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
