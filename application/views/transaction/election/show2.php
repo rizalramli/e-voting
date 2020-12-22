@@ -25,7 +25,13 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <div class="avatar-item mb-0">
-                                <img onclick="storeElectionParty(<?php echo $item->party_id ?>, '<?php echo $item->party_name ?>', '<?php echo $item->voting_id ?>')" width="100px" height="100px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item->party_photo) ?>" class="img-fluid" data-toggle="tooltip" title="<?php echo $item->party_name ?>">
+                                <table width="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <img onclick="storeElectionParty(<?php echo $item->party_id ?>, '<?php echo $item->party_name ?>', '<?php echo $item->voting_id ?>')" width="80px" height="80px" alt="image" src="<?php echo base_url('assets/photo/partai/' . $item->party_photo) ?>" title="<?php echo $item->party_name ?>">
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                             <h6 class="card-title mt-2"><?php echo $item->party_name ?></h6>
                             <ul class="list-group">
