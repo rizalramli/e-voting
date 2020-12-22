@@ -42,7 +42,21 @@ class RecapitulationController extends CI_Controller
             'voting_id'  => $id,
         );
 
+        $where_sah   = array(
+            'voting_id'  => $id,
+            'election_status' => 1
+        );
+
+        $where_tidak_sah   = array(
+            'voting_id'  => $id,
+            'election_status' => 0
+        );
+
+
         $data['election_grand_total'] = $this->M_crud->edit_data($where, 'view_election')->num_rows();
+        $data['election_sah'] = $this->M_crud->edit_data($where_sah, 'view_election')->num_rows();
+        $data['election_tidak_sah'] = $this->M_crud->edit_data($where_tidak_sah, 'view_election')->num_rows();
+
         $data['result_data'] = $this->M_crud->get_data_order_by_desc('view_recapitulation_candidate', $where, 'election_total')->result();
 
         $data['result_data_party'] = $this->M_crud->get_data_order_by_desc('view_recapitulation_party', $where, 'election_total')->result();

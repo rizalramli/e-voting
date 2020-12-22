@@ -12,7 +12,17 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total ?></h6>
+                            <div class="row">
+                                <div class="col-md-4 mb-2">
+                                    <span class="badge badge-info">Suara Masuk : <?php echo $election_grand_total ?></span>
+                                </div>
+                                <div class="col-md-3 mb-2 text-right">
+                                    <span class="badge badge-success">Sah : <?php echo $election_sah ?></span>
+                                </div>
+                                <div class="col-md-5 mb-2 text-right">
+                                    <span class="badge badge-danger">Tidak Sah : <?php echo $election_tidak_sah ?></span>
+                                </div>
+                            </div>
                             <div class="table-responsive">
                                 <table width="100%" class="table table-sm table-striped dataTables">
                                     <thead>
@@ -48,7 +58,17 @@
                     <?php if ($voting_id != 1) { ?>
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="text-center">Suara Masuk : <?php echo $election_grand_total ?></h6>
+                                <div class="row">
+                                    <div class="col-md-4 mb-2">
+                                        <span class="badge badge-info">Suara Masuk : <?php echo $election_grand_total ?></span>
+                                    </div>
+                                    <div class="col-md-3 mb-2 text-right">
+                                        <span class="badge badge-success">Sah : 999</span>
+                                    </div>
+                                    <div class="col-md-5 mb-2 text-right">
+                                        <span class="badge badge-danger">Tidak Sah : 999</span>
+                                    </div>
+                                </div>
                                 <?php foreach ($result_data_party as $item_data_party) :
                                     $percentage_party = ($item_data_party->election_total * 100) / $election_grand_total;
                                 ?>
