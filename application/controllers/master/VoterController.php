@@ -5,17 +5,19 @@ class VoterController extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('M_crud');
+    }
+
+    public function index()
+    {
+
         if (!$this->session->userdata('username')) {
             redirect('login_admin');
         }
         if ($this->session->userdata('role') != "Admin") {
             redirect('login_admin');
         }
-        $this->load->model('M_crud');
-    }
 
-    public function index()
-    {
         $where = array(
             'is_active' => 1,
         );
@@ -25,6 +27,14 @@ class VoterController extends CI_Controller
 
     public function sendEmail()
     {
+
+        if (!$this->session->userdata('username')) {
+            redirect('login_admin');
+        }
+        if ($this->session->userdata('role') != "Admin") {
+            redirect('login_admin');
+        }
+
         $table = 'voter';
         $where = array('send_status' => 0);
         $voter = $this->M_crud->edit_data($where, $table)->result();
@@ -44,7 +54,7 @@ class VoterController extends CI_Controller
 
         $this->load->library('email', $config);
         foreach ($voter as $item) {
-            $this->email->from('pemilu.fh.unair@gmail.com', 'E-voting');
+            $this->email->from('pemilu.fh.unair@gmail.com', 'PEMIRA FH UNAIR 2020');
 
             $this->email->to($item->email);
             $this->email->subject('Verify Email');

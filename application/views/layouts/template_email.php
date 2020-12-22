@@ -254,7 +254,7 @@
                 <table class="email-content" width="100%" cellpadding="0" cellspacing="0">
                     <tr>
                         <td class="email-masthead">
-                            <h1 style="text-align:center">E-Voting</h1>
+                            <h1 style="text-align:center">PEMIRA FH UNAIR 2020</h1>
                         </td>
                     </tr>
                     <!-- Email Body -->
