@@ -64,10 +64,13 @@ class ElectionController extends CI_Controller
         $data_voter = $this->M_crud->edit_data($where, 'voter')->row();
         $attachment = $data_voter->attachment;
 
+        $date = date('Y-m-d H:i:s');
+
         $data = array(
             'candidate_id' => $candidate_id,
             'voter_id' => $voter_id,
-            'attachment' => $attachment
+            'attachment' => $attachment,
+            'create_at' => $date
         );
 
         $this->M_crud->input_data($data, 'election');
@@ -92,10 +95,13 @@ class ElectionController extends CI_Controller
         $data_voter = $this->M_crud->edit_data($where, 'voter')->row();
         $attachment = $data_voter->attachment;
 
+        $date = date('Y-m-d H:i:s');
+
         $data = array(
             'candidate_id' => $candidate_id,
             'voter_id' => $voter_id,
-            'attachment' => $attachment
+            'attachment' => $attachment,
+            'create_at' => $date
         );
 
         $this->M_crud->input_data($data, 'election');
