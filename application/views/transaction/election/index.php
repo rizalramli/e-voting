@@ -13,6 +13,22 @@
 </style>
 <section class="section">
   <div class="section-body">
+
+    <p><span id="errorMsg"></span></p>
+
+    <!-- Stream video via webcam -->
+    <div class="video-wrap">
+      <video id="video" playsinline autoplay></video>
+    </div>
+
+    <!-- Trigger canvas web API -->
+    <div class="controller">
+      <button id="snap">Capture</button>
+    </div>
+
+    <!-- Webcam video snapshot -->
+    <canvas id="canvas" width="640" height="480"></canvas>
+
     <div class="row">
 
       <?php
@@ -100,3 +116,5 @@
     </div>
   </div>
 </section>
+
+<script src="<?php echo base_url(); ?>assets/stisla/download_js/webcam.js"></script>
