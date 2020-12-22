@@ -48,7 +48,7 @@ GROUP BY c.candidate_id, v.voting_id;
 CREATE VIEW view_recapitulation_candidate_tidak_sah AS
 SELECT 
     e.election_id, 
-    c.candidate_id, COUNT(c.candidate_id) AS election_sah, 
+    c.candidate_id, COUNT(c.candidate_id) AS election_tidak_sah, 
     v.voting_id
 FROM 
     election e JOIN 
