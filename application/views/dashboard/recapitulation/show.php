@@ -28,12 +28,10 @@
                             <table width="100%" class="table table-sm table-striped dataTables">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Jumlah Suara</th>
-                                        <th scope="col">Sah</th>
-                                        <th scope="col">Tidak Sah</th>
-                                        <th scope="col">Persentase</th>
+                                        <td scope="col">No</td>
+                                        <td scope="col">Nama</td>
+                                        <td align="right" scope="col">Jumlah Suara</td>
+                                        <td align="right" scope="col">Persentase</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,15 +57,21 @@
                                     ?>
                                         <tr>
                                             <td><?php echo $i ?></td>
-                                            <td><?php echo $item_data->candidate_name ?></td>
-                                            <td><?php echo $item_data->election_total ?></td>
-                                            <td><?php echo $sah ?></td>
-                                            <td><?php echo $tidak_sah ?></td>
-                                            <td><b><?php echo $percentage . "%" ?></b></td>
+                                            <td>
+                                                <?php echo $item_data->candidate_name ?>
+                                            </td>
+                                            <td align="right"><?php echo $sah ?></td>
+                                            <td align="right"><b><?php echo round($percentage, 2) . "%" ?></b></td>
                                         </tr>
                                     <?php
                                         $i++;
                                     endforeach; ?>
+                                    <tr>
+                                        <td></td>
+                                        <td><b>Suara Tidak Sah</b></td>
+                                        <td align="right"><?php echo $election_tidak_sah ?></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -115,18 +119,18 @@
                                         <div class="col-sm-8">
                                             <div class="card-body">
                                                 <h5 class="card-title"><?php echo $item_data_party->party_name ?></h5>
-                                                <div class="card-text">Sah : <?php echo $sah ?> Tidak Sah :<?php echo $tidak_sah ?></div>
-                                                <div class="card-text">Persentase : <b><?php echo $percentage_party ?> %</b></div>
+                                                <div class="card-text">Jumlah Suara : <?php echo $sah ?>
+                                                    <div class="card-text">Persentase : <b><?php echo round($percentage_party, 2) ?> %</b></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                <?php endforeach; ?>
                                 </div>
-                            <?php endforeach; ?>
                         </div>
+                    <?php } ?>
                     </div>
-                <?php } ?>
             </div>
         </div>
-    </div>
     </div>
 </section>
