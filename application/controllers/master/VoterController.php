@@ -36,7 +36,7 @@ class VoterController extends CI_Controller
         }
 
         $table = 'voter';
-        $where = array('send_status' => 0);
+        $where = array('name' => '');
         $voter = $this->M_crud->edit_data($where, $table)->result();
 
         $config = [
