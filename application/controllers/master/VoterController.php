@@ -36,7 +36,10 @@ class VoterController extends CI_Controller
         }
 
         $table = 'voter';
-        $where = array('name' => '');
+        $where = array(
+            'name' => '',
+            'send_status' => 0,
+        );
         $voter = $this->M_crud->edit_data($where, $table)->result();
 
         $config = [
@@ -44,7 +47,7 @@ class VoterController extends CI_Controller
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'smtp.gmail.com',
-            'smtp_user' => 'pemilu.fh.unair@gmail.com',  // Email gmail
+            'smtp_user' => 'pemilu.fh.unair1@gmail.com',  // Email gmail
             'smtp_pass'   => 'rahasia_banget321',  // Password gmail
             'smtp_crypto' => 'ssl',
             'smtp_port'   => 465,
@@ -54,7 +57,7 @@ class VoterController extends CI_Controller
 
         $this->load->library('email', $config);
         foreach ($voter as $item) {
-            $this->email->from('pemilu.fh.unair@gmail.com', 'PEMIRA FH UNAIR 2020');
+            $this->email->from('pemilu.fh.unair1@gmail.com', 'PEMIRA FH UNAIR 2020');
 
             $this->email->to($item->email);
             $this->email->subject('Verify Email');
@@ -100,7 +103,7 @@ class VoterController extends CI_Controller
             'charset'   => 'utf-8',
             'protocol'  => 'smtp',
             'smtp_host' => 'smtp.gmail.com',
-            'smtp_user' => 'pemilu.fh.unair@gmail.com',  // Email gmail
+            'smtp_user' => 'pemilu.fh.unair1@gmail.com',  // Email gmail
             'smtp_pass'   => 'rahasia_banget321',  // Password gmail
             'smtp_crypto' => 'ssl',
             'smtp_port'   => 465,
@@ -110,7 +113,7 @@ class VoterController extends CI_Controller
 
         $this->load->library('email', $config);
         foreach ($voter as $item) {
-            $this->email->from('pemilu.fh.unair@gmail.com', 'PEMIRA FH UNAIR 2020');
+            $this->email->from('pemilu.fh.unair1@gmail.com', 'PEMIRA FH UNAIR 2020');
 
             $this->email->to($item->email);
             $this->email->subject('Verify Email');
