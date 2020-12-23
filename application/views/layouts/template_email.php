@@ -266,6 +266,9 @@
                                     <td class="content-cell">
                                         <h1>Hello!</h1>
                                         <p>Klik tombol dibawah ini untuk melakukan verifikasi email, supaya dapat melakukan pemilihan.</p>
+                                        <a href="<?php echo base_url('verify/') . $email ?>">
+                                            <p><?php echo base_url('verify/') . $email ?></p>
+                                        </a>
                                         <!-- Action -->
                                         <table class="body-action" align="left" width="100%" cellpadding="0" cellspacing="0">
                                             <tr>
